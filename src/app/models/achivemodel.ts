@@ -1,7 +1,9 @@
-export interface Product {
+export interface Achievement{
     key?: string;
     name: string;
-    price: string;
-    group: string;
+    content: string;
+    reward: string;
     uid: string;
+    value: number;
+    active: boolean;
 }
