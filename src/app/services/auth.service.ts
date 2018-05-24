@@ -2,14 +2,14 @@ import {Injectable} from '@angular/core';
 
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-
+import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
   user: Observable<firebase.User>;
 
-  constructor(private firebaseAuth: AngularFireAuth) {
+  constructor(private firebaseAuth: AngularFireAuth, public router : Router) {
     this.user = firebaseAuth.authState;
   }
 
@@ -18,9 +18,7 @@ export class AuthService {
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Success!', value);
-        localStorage.setItem('uid', value.uid);
-        location.reload();
+        this.router.navigate(['/front-page']);
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);
@@ -32,9 +30,7 @@ export class AuthService {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Nice, it worked!');
-        localStorage.setItem('uid', value.uid);
-        location.reload();
+        this.router.navigate(['/user-page']);
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);
