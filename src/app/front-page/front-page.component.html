@@ -14,6 +14,24 @@
             id, voluptates a nobis saepe similique reprehenderit odit consequuntur minima 
           ullam laudantium temporibus tempora corrupti laboriosam nisi voluptas.</p>
   </div>
+<<<<<<< HEAD
+    <div *ngFor = "let user of users"><p>{{user.username}}</p> <!--Проверяем получение юзеров-->
+    </div>
+    <div>
+      <input type="text" placeholder="username" [(ngModel)] = "username">
+      <input type="email" placeholder="email" [(ngModel)] = "email">  
+      <input type="password" placeholder="password" [(ngModel)] = "password">
+      <input type="password" placeholder="validate password" [(ngModel)] = "validpassword">         <!--Проверяем отправку юзеров-->
+      <button (click) = "postreqverif()">Confirm</button>
+    </div>
+</div>
+
+<div class="achievecont">
+  <div class="achievename">Achieve Name</div>
+  <div class="achievecontent">Achieve content</div>
+  <div class="achievereward"> Achieve reward</div>
+  <div class= "achievebody">plus <button>go</button></div>
+=======
   <div class="col-lg-6">
     <h3>Rules:</h3>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, nisi? 
@@ -25,4 +43,5 @@
         itaque eum enim recusandae sed modi blanditiis incidunt reprehenderit nam.
       </p>
   </div>  
+>>>>>>> 71ddabf48d45df8de7357e71f45af633cfcd043b
 </div>
