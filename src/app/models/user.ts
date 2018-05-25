@@ -1,6 +1,7 @@
-export interface User{
-    key?: string;
-    uid: string;
-    nickname: string;
-    counter: number;
+export interface IUser{
+    id:number,
+    username: string,
+    email: string,
+    password: string,
+    counter: number
 }
