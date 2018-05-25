@@ -20,7 +20,7 @@ export class AppComponent {
   public validpassword;
   postusers = [];
   modalRef: BsModalRef;
-  
+
   constructor(private modalService: BsModalService, 
     protected userserv: UserService, private router: Router) {}
 
@@ -40,6 +40,7 @@ export class AppComponent {
     userdata = { username: this.username, email: this.email, password: this.password, counter: "0" }
     this.userserv.addUser(userdata, '/add').subscribe(res =>{});
     this.cleaner();
+    this.modalRef.hide();
     console.log(userdata);
     }
     else{
