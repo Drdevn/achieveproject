@@ -16,6 +16,7 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { LoginComponent } from './login/login.component';
+import { ModalModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ModalModule.forRoot(),
     ButtonsModule.forRoot(),
     BsDropdownModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
