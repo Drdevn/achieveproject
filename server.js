@@ -135,20 +135,20 @@ app.put('/update/:id', function (request, response) {
 app.post('/add', function(request, response){
     console.log(request.body);
    
-    name = request.body.name;
-    surname = request.body.surname;
-    indef = request.body.indef;
-    image_name = request.body.image_name;
+    username = request.body.username;
+    email = request.body.email;
+    password = request.body.password;
+    counter = request.body.counter;
     pool.connect((err, db, done) => {
         if (err) {
             return response.status(400).send(err)
         }
         else {
             knex('users').insert({
-                name:name,
-                surname:surname,
-                indef:indef,
-                image_name:image_name,
+                username:username,
+                email:email,
+                password:password,
+                counter:counter,
             }).then( (table, err) =>{    
         {
             done();
