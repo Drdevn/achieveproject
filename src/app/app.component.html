@@ -25,24 +25,24 @@
     </button>
   </div>
   <div class="modal-body row">
-      <!-- <div class="col-lg-6"><p>Enter your Name:</p></div>
+      <div class="col-lg-6"><p>Enter your Name:</p></div>
       <div class="col-lg-6">
-        <input type="text" placeholder="Name">
-      </div> -->
+        <input type="text" placeholder="Name" [(ngModel)] = "username">
+      </div> 
       <div class="col-lg-6"><p>Enter your E-mail:</p></div>
       <div class="col-lg-6">
-        <input type="text" placeholder="E-mail">
+        <input type="text" placeholder="E-mail" [(ngModel)] = "email">
       </div>
       <div class="col-lg-6"><p>Enter your password:</p></div>
       <div class="col-lg-6">
-        <input type="password" placeholder="password">
+        <input type="password" placeholder="password" [(ngModel)] = "password">
       </div>
       <div class="col-lg-6"><p>Repeat your password:</p></div>
       <div class="col-lg-6">
-        <input type="password" placeholder="password">
+        <input type="password" placeholder="password" [(ngModel)] = "validpassword">
       </div>
         <div class="col-lg-12 cent">
-          <input type="button" value="Sing up" class="btn btn-success">
+          <input type="button" value="Sing up" class="btn btn-success" (click)="postreqverif()">
         </div>
   </div>
 </ng-template>
