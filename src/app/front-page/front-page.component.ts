@@ -14,14 +14,38 @@ import { IUser } from '../models/user';
 })
 export class FrontPageComponent implements OnInit {
   public users;
+  public username;
+  public email;
+  public password;
+  public validpassword;
+  postusers = [];
   constructor(protected userserv: UserService, private router: Router) { }
 
   ngOnInit() {
 
     this.userserv.getUsers().subscribe(data=>{
       this.users = data;
-
     })
   }
+  postreqverif(){
+   let userdata;
+   if(this.password == this.validpassword){
+    userdata = { username: this.username, email: this.email, password: this.password, counter: "0" }
+    this.userserv.addUser(userdata, '/add').subscribe(res =>{});
+    this.cleaner();
+    console.log(userdata);
+    }
+    else{
+      alert("Your password don`t match");
+      this.cleaner();
+    }
 
+  }
+
+  cleaner(){
+    this.username = "";
+    this.password = "";
+    this.email = "";
+    this.validpassword = "";
+  }
 }
