@@ -4,16 +4,4 @@
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil enim quidem quasi 
       id, voluptates a nobis saepe similique reprehenderit odit consequuntur minima 
       ullam laudantium temporibus tempora corrupti laboriosam nisi voluptas.</p>
-
-
-  </div>
-    <div *ngFor = "let user of users"><p>{{user.username}}</p> <!--Проверяем получение юзеров-->
-    </div>
-    <div>
-      <input type="text" placeholder="username" [(ngModel)] = "username" >
-      <input type="email" placeholder="email" [(ngModel)] = "email">  
-      <input type="password" placeholder="password" [(ngModel)] = "password">
-      <input type="password" placeholder="validate password" [(ngModel)] = "validpassword">         <!--Проверяем отправку юзеров-->
-      <button (click) = "postreqverif()" >Confirm</button>
-    </div>
 </div>
