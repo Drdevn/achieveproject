@@ -9,15 +9,17 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
  public email;
  public password;
-  constructor(public authService: AuthService, public router: Router) { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
-  }
-  signUp() {
-    this.authService.signup(this.email, this.password);
-  }
-  login() {
-    this.authService.login(this.email, this.password);
+    
   }
 
 }
+  // signUp() {
+  //   this.authService.signup(this.email, this.password);
+  // }
+  // login() {
+  //   this.authService.login(this.email, this.password);
+  // }
+// public authService: AuthService

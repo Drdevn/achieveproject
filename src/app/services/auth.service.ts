@@ -7,41 +7,41 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
-  user: Observable<firebase.User>;
+  // user: Observable<firebase.User>;
 
-  constructor(private firebaseAuth: AngularFireAuth, public router : Router) {
-    this.user = firebaseAuth.authState;
-  }
+  constructor() {
+//     this.user = firebaseAuth.authState;
+//   }
+// private firebaseAuth: AngularFireAuth, public router : Router
+//   signup(email: string, password: string) {
+//     this.firebaseAuth
+//       .auth
+//       .createUserWithEmailAndPassword(email, password)
+//       .then(value => {
+//         this.router.navigate(['/front-page']);
+//       })
+//       .catch(err => {
+//         console.log('Something went wrong:', err.message);
+//       });
+//   }
 
-  signup(email: string, password: string) {
-    this.firebaseAuth
-      .auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(value => {
-        this.router.navigate(['/front-page']);
-      })
-      .catch(err => {
-        console.log('Something went wrong:', err.message);
-      });
-  }
+//   login(email: string, password: string) {
+//     this.firebaseAuth
+//       .auth
+//       .signInWithEmailAndPassword(email, password)
+//       .then(value => {
+//         this.router.navigate(['/user-page']);
+//       })
+//       .catch(err => {
+//         console.log('Something went wrong:', err.message);
+//       });
+//   }
 
-  login(email: string, password: string) {
-    this.firebaseAuth
-      .auth
-      .signInWithEmailAndPassword(email, password)
-      .then(value => {
-        this.router.navigate(['/user-page']);
-      })
-      .catch(err => {
-        console.log('Something went wrong:', err.message);
-      });
-  }
-
-  logout() {
-    localStorage.clear();
-    this.firebaseAuth
-      .auth
-      .signOut();
+//   logout() {
+//     localStorage.clear();
+//     this.firebaseAuth
+//       .auth
+//       .signOut();
   }
 
 }
