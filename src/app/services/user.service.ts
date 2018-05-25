@@ -13,5 +13,9 @@ public userurl = 'http://localhost:3000';
     return this.http.get<IUser[]>(this.userurl);
    }
 
+   addUser(req, url:string): Observable <IUser>{
+    return this.http.post<IUser>(this.userurl+ url, req)
+   
+  }
 }
 // private db: AngularFireDatabase

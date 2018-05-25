@@ -1,6 +1,8 @@
 let express = require("express");
 let pg = require('pg');
 let knex = require('knex')  
+// let passwordHash = require('password-hash');
+
 ({
     client:'postgresql',
     connection:{
@@ -9,7 +11,6 @@ let knex = require('knex')
         user: 'postgres',
         password: 'noob188620lol',
         database: 'achievepro',
-        max:10
     },
     searchPath: 'public',
     pool: { min: 1, max: 20 }
@@ -24,7 +25,6 @@ let pool = new pg.Pool({
     port: 5432,
     password: 'noob188620lol',
     database: 'achievepro',
-    max: 10,
     host: 'localhost',
     user: 'postgres'
 });
@@ -152,7 +152,6 @@ app.post('/add', function(request, response){
             }).then( (table, err) =>{    
         {
             done();
-            console.log(image_name);
             if (err) {
                 return response.status(400).send(err);
             }
