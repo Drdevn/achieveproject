@@ -8,7 +8,7 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-import { environment} from '../environments/environment';
+// import { environment} from '../environments/environment';
 import {AuthService} from './services/auth.service';
 import {LocationStrategy} from '@angular/common';
 import {HashLocationStrategy} from '@angular/common';
@@ -17,6 +17,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { UserPageComponent } from './user-page/user-page.component';
 import { LoginComponent } from './login/login.component';
 import { ModalModule } from 'ngx-bootstrap';
+import{ UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,15 +34,16 @@ import { ModalModule } from 'ngx-bootstrap';
     ModalModule.forRoot(),
     ButtonsModule.forRoot(),
     BsDropdownModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     FormsModule,
+    HttpClientModule,
     AngularFireAuthModule
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }, AuthService,],
+  }, AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

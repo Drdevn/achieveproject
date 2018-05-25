@@ -7,8 +7,8 @@ let knex = require('knex')
         host: 'localhost',
         port: 5432,
         user: 'postgres',
-        password: 'root',
-        database: 'postgres',
+        password: 'noob188620lol',
+        database: 'achievepro',
         max:10
     },
     searchPath: 'public',
@@ -22,8 +22,8 @@ let cors = require("cors");
 let PORT = 3000;
 let pool = new pg.Pool({
     port: 5432,
-    password: 'root',
-    database: 'postgres',
+    password: 'noob188620lol',
+    database: 'achievepro',
     max: 10,
     host: 'localhost',
     user: 'postgres'
