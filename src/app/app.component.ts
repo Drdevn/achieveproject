@@ -60,10 +60,15 @@ export class AppComponent {
 
   registerUser(){
     let userdata;
-    userdata = { username: this.username, email: this.email, password: this.password, counter: "0" }
+    userdata = { username: this.username,
+       email: this.email,
+       password: this.password, counter: "0" }
     this.userserv.registerUser(userdata)
     .subscribe(
-      res => console.log(res),
+      res => {
+        console.log(res)
+        localStorage.setItem('token', res.token)
+      },  
       err => console.log(err)
     )
     this.modalRef.hide();
@@ -75,7 +80,11 @@ export class AppComponent {
     loginData = { email: this.email, password: this.password}
     this.userserv.loginUser(loginData)
     .subscribe(
-      res => console.log(res),
+      res =>{ 
+      console.log(res)
+      localStorage.setItem('token', res.token)
+      this.router.navigate(['/login'])      
+    },
       err => console.log(err)
     )
     this.modalRef.hide();
