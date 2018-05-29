@@ -19,13 +19,8 @@ private loginUrl = "http://localhost:3000/api/login"
     return this.http.post<any>(this.loginUrl, user)
   }
 
-  getUsers(): Observable <IUser[]> {
-    return this.http.get<IUser[]>(this.userurl);
-   }
-
-   addUser(req, url:string): Observable <IUser>{
-    return this.http.post<IUser>(this.userurl+ url, req)
+  loggedIn(){
+    return !!localStorage.getItem('token')
   }
-
 }
 // private db: AngularFireDatabase

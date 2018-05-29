@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 // import { ModalModule } from 'ngx-bootstrap';
 import{ UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }, AuthService, UserService],
+  }, AuthService, AuthGuard, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
