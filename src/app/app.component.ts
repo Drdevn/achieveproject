@@ -18,7 +18,7 @@ export class AppComponent {
   public email;
   public password;
   public validpassword;
-  postusers = [];
+ 
   modalRef: BsModalRef;
 
   constructor(private modalService: BsModalService, 
@@ -30,25 +30,26 @@ export class AppComponent {
 
   ngOnInit() {
 
-    this.userserv.getUsers().subscribe(data=>{
-      this.users = data;
-    })
+    // this.userserv.getUsers().subscribe(data=>{
+    //   this.users = data;
+    // })
   }
-  postreqverif(){
-   let userdata;
-   if(this.password == this.validpassword){
-    userdata = { username: this.username, email: this.email, password: this.password, counter: "0" }
-    this.userserv.addUser(userdata, '/add').subscribe(res =>{});
-    this.cleaner();
-    this.modalRef.hide();
-    console.log(userdata);
-    }
-    else{
-      alert("Your password don`t match");
-      this.cleaner();
-    }
-
-  }
+  // postreqverif(){
+  //  if(this.password == this.validpassword ){
+   
+    // if(this.username !== this.users.username && this.email !== this.users.email){
+    // this.userserv.addUser(userdata, '/add').subscribe(res =>{});
+    // this.cleaner();
+    // this.modalRef.hide();
+    // console.log(userdata); 
+    // } 
+//     }
+//     else{
+//       alert("Your password don`t match");
+//       this.cleaner();
+//     }
+// }
+  
 
   cleaner(){
     this.username = "";
@@ -57,5 +58,28 @@ export class AppComponent {
     this.validpassword = "";
   }
 
+  registerUser(){
+    let userdata;
+    userdata = { username: this.username, email: this.email, password: this.password, counter: "0" }
+    this.userserv.registerUser(userdata)
+    .subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
+    this.modalRef.hide();
+    this.cleaner();
+  }
  
+  loginUser(){
+    let loginData;
+    loginData = { email: this.email, password: this.password}
+    this.userserv.loginUser(loginData)
+    .subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
+    this.modalRef.hide();
+    this.cleaner();
+  }
+
 }
