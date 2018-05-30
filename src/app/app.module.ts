@@ -18,8 +18,9 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { LoginComponent } from './login/login.component';
 // import { ModalModule } from 'ngx-bootstrap';
 import{ UserService } from './services/user.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service'
 
 @NgModule({
   declarations: [
@@ -44,7 +45,12 @@ import { AuthGuard } from './auth.guard';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }, AuthService, AuthGuard, UserService],
+  }, AuthService, AuthGuard, UserService,
+{
+  provide: HTTP_INTERCEPTORS,
+  useClass: TokenInterceptorService,
+  multi: true
+}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

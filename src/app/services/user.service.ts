@@ -22,5 +22,8 @@ private loginUrl = "http://localhost:3000/api/login"
   loggedIn(){
     return !!localStorage.getItem('token')
   }
+  getToken(){
+    return localStorage.getItem('token')
+  }
 }
 // private db: AngularFireDatabase
