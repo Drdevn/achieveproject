@@ -15,7 +15,6 @@ import {HashLocationStrategy} from '@angular/common';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserPageComponent } from './user-page/user-page.component';
-import { LoginComponent } from './login/login.component';
 // import { ModalModule } from 'ngx-bootstrap';
 import{ UserService } from './services/user.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -28,7 +27,6 @@ import { TokenInterceptorService } from './services/token-interceptor.service'
     FrontPageComponent,
     PageNotFoundComponent,
     UserPageComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,

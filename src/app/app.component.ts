@@ -30,25 +30,8 @@ export class AppComponent {
 
   ngOnInit() {
 
-    // this.userserv.getUsers().subscribe(data=>{
-    //   this.users = data;
-    // })
+    
   }
-  // postreqverif(){
-  //  if(this.password == this.validpassword ){
-   
-    // if(this.username !== this.users.username && this.email !== this.users.email){
-    // this.userserv.addUser(userdata, '/add').subscribe(res =>{});
-    // this.cleaner();
-    // this.modalRef.hide();
-    // console.log(userdata); 
-    // } 
-//     }
-//     else{
-//       alert("Your password don`t match");
-//       this.cleaner();
-//     }
-// }
   
 
   cleaner(){
@@ -91,6 +74,6 @@ export class AppComponent {
     this.cleaner();
   }
 
-    
+
 
 }
