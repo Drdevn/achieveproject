@@ -1,0 +1,31 @@
+body{
+    background-color: #393E46;
+    color: #EEEEEE;
+}
+
+.btn-cast{
+    border-color: #4ecca3;
+    color: #4ecca3;
+}
+.btn-cast:hover{
+    background-color: #4ecca3;
+    color: #EEEEEE;
+    border-color: #4ecca3;
+}
+ 
+.modal-header{
+    background-color: #393E46;
+    border-radius: 0;
+}
+
+.modal-body{
+    background-color: #393E46;
+    margin: 0;
+    
+}
+
+.modal-dialog{
+    color: #EEEEEE;
+    background-color: #393E46;
+    
+}
