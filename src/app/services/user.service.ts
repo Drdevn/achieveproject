@@ -3,7 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { IUser } from '../models/user';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
