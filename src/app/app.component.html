@@ -3,8 +3,10 @@
     <h1>Ach.</h1>
   </div>
   <div class="col-lg-10" style="text-align: right;">
-      <button class="btn btn-outline-info" (click)="openModal(login)">Login</button>
-      <button class="btn btn-outline-info" (click)="openModal(singup)">Sing up</button>
+      <button class="btn btn-outline-info" *ngIf="!userserv.loggedIn()" (click)="openModal(login)">Login</button>
+      <button class="btn btn-outline-info" *ngIf="!userserv.loggedIn()" (click)="openModal(singup)">Sing up</button>
+      <button class="btn btn-outline-info" *ngIf="userserv.loggedIn()" (click)="userserv.logoutUser()">Logout</button>
+      
   </div>
 </nav>
 <dir class="container">
