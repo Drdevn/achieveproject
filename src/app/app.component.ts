@@ -83,7 +83,7 @@ export class AppComponent {
       res =>{ 
       console.log(res)
       localStorage.setItem('token', res.token)
-      this.router.navigate(['/login'])      
+      this.router.navigate(['/userpage'])      
     },
       err => console.log(err)
     )
