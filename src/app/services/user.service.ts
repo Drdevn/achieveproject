@@ -10,6 +10,7 @@ export class UserService {
 public userurl = 'http://localhost:3000';
 private registerUrl = "http://localhost:3000/api/register"
 private loginUrl = "http://localhost:3000/api/login"
+private icons = "http://localhost:3000/api/icons"
   constructor(private http: HttpClient, private router: Router) { }
   
   registerUser(user){
@@ -22,6 +23,9 @@ private loginUrl = "http://localhost:3000/api/login"
 
   loggedIn(){
     return !!localStorage.getItem('token')
+  }
+  getIcons():Observable<any>{
+    return this.http.get(this.icons)
   }
   getToken(){
     return localStorage.getItem('token')
