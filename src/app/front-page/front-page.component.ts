@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 // import { UserFilterPipe } from '../user-filter.pipe';
 import { IUser } from '../models/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-front-page',
@@ -12,10 +13,18 @@ import { IUser } from '../models/user';
   styleUrls: ['./front-page.component.css']
 })
 export class FrontPageComponent implements OnInit {
-  constructor() { }
-
+  constructor(private imgser: UserService) { }
+public imgs;
   ngOnInit() {
-
+    
   }
 
-}
+ getImg(){
+      this.imgser.getIcons().subscribe(data=>{
+        this.imgs = data;
+      }) 
+
+      }
+    }
+
+
