@@ -29,3 +29,18 @@ body{
     background-color: #393E46;
     
 }
+
+.card{
+    background-color: #4c5759 !important;
+}
+
+.one-achive{
+    margin-top: 10px;
+    border: 1px solid #4ecca3;
+     
+}
+
+.one-achive-name{
+    padding-top: 5px; 
+    border-bottom: 1px solid #4ecca3;
+}
