@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { ButtonsModule, BsDropdownModule, ModalModule } from 'ngx-bootstrap';
+import { ButtonsModule, BsDropdownModule, ModalModule, AccordionModule } from 'ngx-bootstrap';
 import { AppComponent } from './app.component';
 import {  } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
@@ -34,6 +34,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service'
     ModalModule.forRoot(),
     ButtonsModule.forRoot(),
     BsDropdownModule.forRoot(),
+    AccordionModule.forRoot(),
     // AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     FormsModule,
