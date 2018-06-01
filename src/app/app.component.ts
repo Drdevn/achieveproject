@@ -18,8 +18,7 @@ export class AppComponent {
   public email;
   public password;
   public validpassword;
-  public updcounter;
-  public updurl;
+
   modalRef: BsModalRef;
 
   constructor(private modalService: BsModalService, 
@@ -75,10 +74,5 @@ export class AppComponent {
     this.cleaner();
   }
 
-updateIt(){
-  let userupd = {counter: this.updcounter, icon: this.updurl}
-  console.log(userupd)
-  this.userserv.updateUser(userupd).subscribe(res =>{})
-}
 
 }

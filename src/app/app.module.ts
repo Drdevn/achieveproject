@@ -39,7 +39,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service'
     AngularFireDatabaseModule,
     FormsModule,
     HttpClientModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   providers: [{
     provide: LocationStrategy,

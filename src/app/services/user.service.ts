@@ -22,13 +22,16 @@ private updateuser = "http://localhost:3000/api/user"
     return this.http.post<any>(this.loginUrl, user)
   }
 updateUser(req){
-  return this.http.put<any>(this.updateuser + '/' + req.id, req )
+  return this.http.put<any>(this.updateuser + '/' + req.iat, req )
 }
   loggedIn(){
     return !!localStorage.getItem('token')
   }
   getIcons():Observable<any>{
     return this.http.get(this.icons)
+  }
+  getUser():Observable<any>{
+    return this.http.get(this.updateuser)
   }
   getToken(){
     return localStorage.getItem('token')
