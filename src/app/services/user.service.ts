@@ -11,6 +11,7 @@ public userurl = 'http://localhost:3000';
 private registerUrl = "http://localhost:3000/api/register"
 private loginUrl = "http://localhost:3000/api/login"
 private icons = "http://localhost:3000/api/icons"
+private updateuser = "http://localhost:3000/api/user"
   constructor(private http: HttpClient, private router: Router) { }
   
   registerUser(user){
@@ -20,7 +21,9 @@ private icons = "http://localhost:3000/api/icons"
   loginUser(user){
     return this.http.post<any>(this.loginUrl, user)
   }
-
+updateUser(req){
+  return this.http.put<any>(this.updateuser + '/' + req.id, req )
+}
   loggedIn(){
     return !!localStorage.getItem('token')
   }
