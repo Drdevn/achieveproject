@@ -3,6 +3,8 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { UserService } from '../services/user.service';
 import * as decode from 'jwt-decode'
+import { Subject } from 'rxjs';
+
 
 @Component({
   selector: 'app-user-page',
@@ -26,7 +28,6 @@ export class UserPageComponent implements OnInit {
       this.iconeList = data;
       console.log(this.iconeList[0].name);
     });
-
   }
 
   openModal(template) {
@@ -39,11 +40,13 @@ export class UserPageComponent implements OnInit {
 
   }
   getUserId(){
+    
     let token = localStorage.getItem('token')
-    let tokenPayload = decode(token);
-   let userupd = {counter: this.updcounter, icon: this.updurl}
-   this.userService.updateUser(tokenPayload).subscribe(res =>{})
-   console.log(tokenPayload);
+ 
+    let tokenPayload = <any>{}
+    tokenPayload = decode(token);
+    let userupd = {id: tokenPayload.subject, counter: this.updcounter, icon: this.updurl}
+    this.userService.updateUser(userupd).subscribe(res =>{})
 
   }
   updateIt(){
