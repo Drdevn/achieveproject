@@ -9,9 +9,9 @@
   </div>
 
   <div class="col-lg-3">
-    <h2>User Nickname</h2>
-    <p>user.mail@gmail.com</p>
-    <p>User score: 1488/100500 xp</p>
+    <h2>{{userData.username}}</h2>
+    <p>{{userData.email}}</p>
+    <p>User score: {{userData.counter}}</p>
     <p>Done ach: 420</p>
     <p>Created ach: 228</p>
   </div>
@@ -69,18 +69,3 @@
           </div>
       </div>
   </ng-template>
-
-  <div>
-    <input type="text" [(ngModel)] = "updcounter">
-    <input type="text" [(ngModel)] = "updurl">
-    <button (click) = "getUserId()">Clik Me Boi</button>
-    </div>
-
-    <div>
-     <ul>
-      <li>
-        {{userData.username}}
-       </li>
-</ul>
-     
-    </div>
