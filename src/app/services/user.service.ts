@@ -12,6 +12,7 @@ private registerUrl = "http://localhost:3000/api/register"
 private loginUrl = "http://localhost:3000/api/login"
 private icons = "http://localhost:3000/api/icons"
 private updateuser = "http://localhost:3000/api/update"
+private getuser = "http://localhost:3000/api/user"
   constructor(private http: HttpClient, private router: Router) { }
   
   registerUser(user){
@@ -30,8 +31,8 @@ updateUser(req){
   getIcons():Observable<any>{
     return this.http.get(this.icons)
   }
-  getUser():Observable<any>{
-    return this.http.get(this.updateuser)
+  getUser(req):Observable<any>{
+    return this.http.get(this.getuser + "/" + req.id)
   }
   getToken(){
     return localStorage.getItem('token')

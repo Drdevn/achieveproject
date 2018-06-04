@@ -14,17 +14,10 @@ import { UserService } from '../services/user.service';
 })
 export class FrontPageComponent implements OnInit {
   constructor(private imgser: UserService) { }
-public imgs;
-  ngOnInit() {
-    
-  }
-
- getImg(){
-      this.imgser.getIcons().subscribe(data=>{
-        this.imgs = data;
-      }) 
-
-      }
+    ngOnInit() {
+      
     }
+
+  }
 
 

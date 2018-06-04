@@ -12,58 +12,56 @@ import { Subject } from 'rxjs';
   styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent implements OnInit {
-  public userIcon = "boy_1.svg";
+  public userData = <any>{};
+  public userIcon;
   public iconeList;
   public changeIcon = this.userIcon;
   public updcounter;
   public updurl;
   public userId;
   modalRef: BsModalRef;
-
+  
+  public token = localStorage.getItem('token');
+  public tokenPayload = <any>{};
+  
   constructor( private modalService: BsModalService, private userService: UserService ) { }
-
-
-
+  
+  
+  
   ngOnInit() {
+    // Дістаємо базу аватарів СТАРТ 
     this.userService.getIcons().subscribe(data =>{
       this.iconeList = data;
       console.log(this.iconeList[0].name);
     });
-
-    this.getUser();
-  }
-
-  openModal(template) {
-    this.modalRef = this.modalService.show(template);
+    // Дістаємо базу аватарів КІНЕЦЬ
+    this.tokenPayload = decode(this.token);
+    let userid = {id:this.tokenPayload.subject}
+    this.userService.getUser(userid).subscribe(data => { 
+      this.userData = data;
+      this.userIcon = data.icon;
+      this.changeIcon = this.userIcon;
+    })
+      
+    console.log(this.userIcon);
+    }
+    
+    openModal(template) {
+      this.modalRef = this.modalService.show(template);
   }
   
   setNewIcon(){
     this.userIcon = this.changeIcon;
+    let userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.userIcon}
+    this.userService.updateUser(userupd).subscribe(res =>{})
     this.modalRef.hide();
 
   }
-  getUserId(){
-    
-    let token = localStorage.getItem('token')
-    let tokenPayload = <any>{}
-    tokenPayload = decode(token);
-    let userupd = {id: tokenPayload.subject, counter: this.updcounter, icon: this.updurl}
+  updateUser(){
+    let userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.updurl}
     this.userService.updateUser(userupd).subscribe(res =>{})
-
   }
-
-  getUser(){
-    let token = localStorage.getItem('token');
-    let userToken = <any>{};
-    userToken = decode(token);
-
-    this.userId = userToken.id;
-    console.log(this.userId);
-  }
-  // updateIt(){
-  //   let userupd = {counter: this.updcounter, icon: this.updurl}
-  //   console.log(userupd)
-  //   this.userService.updateUser(userupd).subscribe(res =>{})
-  // }
   
+  
+ 
 }
