@@ -13,6 +13,9 @@ private loginUrl = "http://localhost:3000/api/login"
 private icons = "http://localhost:3000/api/icons"
 private updateuser = "http://localhost:3000/api/update"
 private getuser = "http://localhost:3000/api/user"
+private postach = "http://localhost:3000/api/addach"
+private getach = "http://localhost:3000/api/ach"
+
   constructor(private http: HttpClient, private router: Router) { }
   
   registerUser(user){
@@ -40,5 +43,13 @@ updateUser(req){
   logoutUser(){
     localStorage.removeItem('token')
     this.router.navigate(['/front-page'])
+  }
+
+  postAchieve(req){
+    return this.http.post<any>(this.postach, req)
+  }
+
+  getAchieve(){
+    return this.http.get(this.getach)
   }
 }
