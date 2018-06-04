@@ -17,6 +17,7 @@ export class UserPageComponent implements OnInit {
   public changeIcon = this.userIcon;
   public updcounter;
   public updurl;
+  public userId;
   modalRef: BsModalRef;
 
   constructor( private modalService: BsModalService, private userService: UserService ) { }
@@ -28,6 +29,8 @@ export class UserPageComponent implements OnInit {
       this.iconeList = data;
       console.log(this.iconeList[0].name);
     });
+
+    this.getUser();
   }
 
   openModal(template) {
@@ -42,17 +45,25 @@ export class UserPageComponent implements OnInit {
   getUserId(){
     
     let token = localStorage.getItem('token')
- 
     let tokenPayload = <any>{}
     tokenPayload = decode(token);
     let userupd = {id: tokenPayload.subject, counter: this.updcounter, icon: this.updurl}
     this.userService.updateUser(userupd).subscribe(res =>{})
 
   }
-  updateIt(){
-    let userupd = {counter: this.updcounter, icon: this.updurl}
-    console.log(userupd)
-    this.userService.updateUser(userupd).subscribe(res =>{})
+
+  getUser(){
+    let token = localStorage.getItem('token');
+    let userToken = <any>{};
+    userToken = decode(token);
+
+    this.userId = userToken.id;
+    console.log(this.userId);
   }
+  // updateIt(){
+  //   let userupd = {counter: this.updcounter, icon: this.updurl}
+  //   console.log(userupd)
+  //   this.userService.updateUser(userupd).subscribe(res =>{})
+  // }
   
 }
