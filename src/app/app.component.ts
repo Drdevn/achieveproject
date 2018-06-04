@@ -45,7 +45,7 @@ export class AppComponent {
     let userdata;
     userdata = { username: this.username,
        email: this.email,
-       password: this.password, counter: "0", icon:"boy_1.svg" }
+       password: this.password, counter: "0", icon:"avatar.svg" }
     this.userserv.registerUser(userdata)
     .subscribe(
       res => {
