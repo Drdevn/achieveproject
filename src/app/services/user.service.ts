@@ -42,4 +42,3 @@ updateUser(req){
     this.router.navigate(['/front-page'])
   }
 }
-// private db: AngularFireDatabase
