@@ -19,7 +19,9 @@ import { UserPageComponent } from './user-page/user-page.component';
 import{ UserService } from './services/user.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './auth.guard';
-import { TokenInterceptorService } from './services/token-interceptor.service'
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AchiveComponent } from './achive/achive.component';
+import { GroupsComponent } from './groups/groups.component'
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service'
     FrontPageComponent,
     PageNotFoundComponent,
     UserPageComponent,
+    AchiveComponent,
+    GroupsComponent,
   ],
   imports: [
     BrowserModule,
