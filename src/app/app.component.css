@@ -1,9 +1,21 @@
 .head{
     padding: 20px;
+
 }
 
 .logo h1{
     color: #4ecca3;
+
+}
+
+.logo button{
+  height: 70%;
+  margin-left: 20px;
+}
+
+
+.logo {
+  display: inline-flex;
 
 }
 

@@ -3,7 +3,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { UserService } from '../services/user.service';
 import * as decode from 'jwt-decode';
-import { Subject } from 'rxjs';
+
 
 
 @Component({
@@ -36,7 +36,7 @@ export class UserPageComponent implements OnInit {
     });
     // Дістаємо базу аватарів КІНЕЦЬ
     this.tokenPayload = decode(this.token);
-    let userid = {id:this.tokenPayload.subject}
+    const userid = {id:this.tokenPayload.subject};
     this.userService.getUser(userid).subscribe(data => {
       this.userData = data;
       this.userIcon = data.icon;
@@ -52,13 +52,13 @@ export class UserPageComponent implements OnInit {
 
   setNewIcon(){
     this.userIcon = this.changeIcon;
-    let userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.userIcon}
+    const userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.userIcon}
     this.userService.updateUser(userupd).subscribe(res =>{})
     this.modalRef.hide();
 
   }
   updateUser(){
-    let userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.updurl}
+    const userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.updurl}
     this.userService.updateUser(userupd).subscribe(res =>{})
   }
 

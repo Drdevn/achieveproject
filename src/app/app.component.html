@@ -1,18 +1,28 @@
 <nav class="row head" >
   <div class="col-lg-2 logo">
     <h1>Ach.hk</h1>
+
   </div>
   <div class="col-lg-10" style="text-align: right; padding: 10px;">
-      <button class="btn btn-outline-info btn-cast" *ngIf="!userserv.loggedIn()" (click)="openModal(login)">Login</button>
-      <button class="btn btn-outline-info btn-cast" *ngIf="!userserv.loggedIn()" (click)="openModal(singup)">Sing up</button>
-      <button class="btn btn-outline-info btn-cast" *ngIf="userserv.loggedIn()" (click)="userserv.logoutUser()">Logout</button>
-      
+    <div class="row">
+      <div class="col-lg-8" style="text-align:  left;">
+        <button class="btn btn-outline-info btn-cast" *ngIf="userserv.loggedIn()" (click)="userserv.goToUserPage()">My page</button>
+
+      </div>
+      <div class="col-lg-4">
+        <button class="btn btn-outline-info btn-cast" *ngIf="!userserv.loggedIn()" (click)="openModal(login)">Login</button>
+        <button class="btn btn-outline-info btn-cast" *ngIf="!userserv.loggedIn()" (click)="openModal(singup)">Sing up</button>
+        <button class="btn btn-outline-info btn-cast" *ngIf="userserv.loggedIn()" (click)="userserv.logoutUser()">Logout</button>
+      </div>
+    </div>
+
+
   </div>
 </nav>
-<dir class="container">
+<div class="container">
 
   <router-outlet></router-outlet>
-</dir>
+</div>
 
 
 <ng-template #singup>
@@ -26,7 +36,7 @@
       <div class="col-lg-6"><p>Enter your Name:</p></div>
       <div class="col-lg-6">
         <input type="text" placeholder="Name" [(ngModel)] = "username">
-      </div> 
+      </div>
       <div class="col-lg-6"><p>Enter your E-mail:</p></div>
       <div class="col-lg-6">
         <input type="text" placeholder="E-mail" [(ngModel)] = "email">
