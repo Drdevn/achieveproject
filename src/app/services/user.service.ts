@@ -17,7 +17,7 @@ private postach = "http://localhost:3000/api/addach"
 private getach = "http://localhost:3000/api/ach"
 
   constructor(private http: HttpClient, private router: Router) { }
-  
+
   registerUser(user){
     return this.http.post<any>(this.registerUrl, user)
   }
@@ -43,6 +43,10 @@ updateUser(req){
   logoutUser(){
     localStorage.removeItem('token')
     this.router.navigate(['/front-page'])
+  }
+
+  goToUserPage(){
+    this.router.navigate(['/userpage'])
   }
 
   postAchieve(req){
