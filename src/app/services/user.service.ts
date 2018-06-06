@@ -1,59 +1,78 @@
-import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { IUser } from '../models/user';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {AngularFireDatabase} from 'angularfire2/database';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {IUser} from '../models/user';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class UserService {
-public userurl = 'http://localhost:3000';
-private registerUrl = "http://localhost:3000/api/register"
-private loginUrl = "http://localhost:3000/api/login"
-private icons = "http://localhost:3000/api/icons"
-private updateuser = "http://localhost:3000/api/update"
-private getuser = "http://localhost:3000/api/user"
-private postach = "http://localhost:3000/api/addach"
-private getach = "http://localhost:3000/api/ach"
-
-  constructor(private http: HttpClient, private router: Router) { }
-
-  registerUser(user){
-    return this.http.post<any>(this.registerUrl, user)
+  public userurl = 'http://localhost:3000';
+  private registerUrl = 'http://localhost:3000/api/register';
+  private loginUrl = 'http://localhost:3000/api/login';
+  private icons = 'http://localhost:3000/api/icons';
+  private updateuser = 'http://localhost:3000/api/update';
+  private getuser = 'http://localhost:3000/api/user';
+  private postach = 'http://localhost:3000/api/addach';
+  private getach = 'http://localhost:3000/api/ach';
+  private getgroup = 'http://localhost:3000/api/group';
+  private registergroup = 'http://localhost:3000/api/addgroup';
+  private joingroup = 'http://localhost:3000/api/join';
+  constructor(private http: HttpClient, private router: Router) {
   }
 
-  loginUser(user){
-    return this.http.post<any>(this.loginUrl, user)
+  registerUser(user) {
+    return this.http.post<any>(this.registerUrl, user);
   }
-updateUser(req){
-  return this.http.put<any>(this.updateuser + '/' + req.id, req )
-}
-  loggedIn(){
-    return !!localStorage.getItem('token')
+  registerGroup(req) {
+    return this.http.post<any>(this.registergroup, req);
   }
-  getIcons():Observable<any>{
-    return this.http.get(this.icons)
-  }
-  getUser(req):Observable<any>{
-    return this.http.get(this.getuser + "/" + req.id)
-  }
-  getToken(){
-    return localStorage.getItem('token')
-  }
-  logoutUser(){
-    localStorage.removeItem('token')
-    this.router.navigate(['/front-page'])
+  loginUser(user) {
+    return this.http.post<any>(this.loginUrl, user);
   }
 
-  goToUserPage(){
-    this.router.navigate(['/userpage'])
+  updateUser(req) {
+    return this.http.put<any>(this.updateuser + '/' + req.id, req);
   }
 
-  postAchieve(req){
-    return this.http.post<any>(this.postach, req)
+  joinGroup(req) {
+    return this.http.put<any>(this.joingroup + '/' + req.id, req);
   }
 
-  getAchieve(){
-    return this.http.get(this.getach)
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+
+  getIcons(): Observable<any> {
+    return this.http.get(this.icons);
+  }
+
+  getUser(req): Observable<any> {
+    return this.http.get(this.getuser + '/' + req.id);
+  }
+
+  getGroup(req): Observable<any> {
+    return this.http.get(this.getgroup + '/' + req.id);
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  logoutUser() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/front-page']);
+  }
+
+  goToUserPage() {
+    this.router.navigate(['/userpage']);
+  }
+
+  postAchieve(req) {
+    return this.http.post<any>(this.postach, req);
+  }
+
+  getAchieve() {
+    return this.http.get(this.getach);
   }
 }

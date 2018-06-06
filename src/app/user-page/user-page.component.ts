@@ -30,13 +30,13 @@ export class UserPageComponent implements OnInit {
 
   ngOnInit() {
     // Дістаємо базу аватарів СТАРТ
-    this.userService.getIcons().subscribe(data =>{
+    this.userService.getIcons().subscribe(data => {
       this.iconeList = data;
       console.log(this.iconeList[0].name);
     });
     // Дістаємо базу аватарів КІНЕЦЬ
     this.tokenPayload = decode(this.token);
-    const userid = {id:this.tokenPayload.subject};
+    const userid = {id: this.tokenPayload.subject};
     this.userService.getUser(userid).subscribe(data => {
       this.userData = data;
       this.userIcon = data.icon;
@@ -53,13 +53,13 @@ export class UserPageComponent implements OnInit {
   setNewIcon(){
     this.userIcon = this.changeIcon;
     const userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.userIcon}
-    this.userService.updateUser(userupd).subscribe(res =>{})
+    this.userService.updateUser(userupd).subscribe(res => {})
     this.modalRef.hide();
 
   }
-  updateUser(){
+  updateUser() {
     const userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.updurl}
-    this.userService.updateUser(userupd).subscribe(res =>{})
+    this.userService.updateUser(userupd).subscribe(res => {});
   }
 
 
