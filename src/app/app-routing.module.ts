@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'front-page', component: FrontPageComponent },
   { path: 'userpage', component: UserPageComponent, canActivate: [AuthGuard]},
   { path: 'achieves', component: AchiveComponent},
-  { path: 'groups', component: GroupsComponent},
+  { path: 'groups/:id', component: GroupsComponent},
   { path: '**', component: PageNotFoundComponent }
 
 ];
@@ -23,3 +23,10 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [
+  FrontPageComponent,
+  UserPageComponent,
+  AchiveComponent,
+  GroupsComponent,
+  PageNotFoundComponent
+];
