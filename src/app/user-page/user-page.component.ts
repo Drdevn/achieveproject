@@ -19,6 +19,7 @@ export class UserPageComponent implements OnInit {
   public updcounter;
   public updurl;
   public userId;
+  public groupname;
   modalRef: BsModalRef;
 
   public token = localStorage.getItem('token');
@@ -50,9 +51,9 @@ export class UserPageComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  setNewIcon(){
+  setNewIcon() {
     this.userIcon = this.changeIcon;
-    const userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.userIcon}
+    const userupd = {id: this.tokenPayload.subject, icon: this.userIcon}
     this.userService.updateUser(userupd).subscribe(res => {})
     this.modalRef.hide();
 
@@ -61,7 +62,11 @@ export class UserPageComponent implements OnInit {
     const userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.updurl}
     this.userService.updateUser(userupd).subscribe(res => {});
   }
-
+  addNewGroup() {
+    const groupadd = {name: this.groupname}
+    this.userService.registerGroup(groupadd).subscribe(res => {});
+    this.modalRef.hide();
+  }
 
 
 }
