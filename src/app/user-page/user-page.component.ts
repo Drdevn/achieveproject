@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { UserService } from '../services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {BsModalService} from 'ngx-bootstrap/modal';
+import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import {UserService} from '../services/user.service';
 import * as decode from 'jwt-decode';
-
 
 
 @Component({
@@ -19,13 +18,14 @@ export class UserPageComponent implements OnInit {
   public updcounter;
   public updurl;
   public userId;
+  public groupname;
   modalRef: BsModalRef;
 
   public token = localStorage.getItem('token');
   public tokenPayload = <any>{};
 
-  constructor( private modalService: BsModalService, private userService: UserService ) { }
-
+  constructor(private modalService: BsModalService, private userService: UserService) {
+  }
 
 
   ngOnInit() {
@@ -41,7 +41,7 @@ export class UserPageComponent implements OnInit {
       this.userData = data;
       this.userIcon = data.icon;
       this.changeIcon = this.userIcon;
-    })
+    });
 
     console.log(this.userIcon);
   }
@@ -50,18 +50,31 @@ export class UserPageComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  setNewIcon(){
+  setNewIcon() {
     this.userIcon = this.changeIcon;
-    const userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.userIcon}
-    this.userService.updateUser(userupd).subscribe(res => {})
+    const userupd = {id: this.tokenPayload.subject, icon: this.userIcon};
+    this.userService.updateUser(userupd).subscribe(res => {
+    });
     this.modalRef.hide();
 
   }
+
   updateUser() {
-    const userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.updurl}
-    this.userService.updateUser(userupd).subscribe(res => {});
+    const userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.updurl};
+    this.userService.updateUser(userupd).subscribe(res => {
+    });
   }
 
+  addNewGroup() {
+    const groupadd = {name: this.groupname};
+    const addGroupDet = {id: this.tokenPayload.subject,  groups: [{name: this.groupname, author: this.tokenPayload.subject}]} ;
+console.log(this.tokenPayload.subject);
+    this.userService.registerGroup(groupadd).subscribe(res => {
+    });
+    this.userService.updateUser(addGroupDet).subscribe(res => {
+    });
+    this.modalRef.hide();
+  }
 
 
 }
