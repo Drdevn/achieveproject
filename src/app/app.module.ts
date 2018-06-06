@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { ButtonsModule, BsDropdownModule, ModalModule, AccordionModule } from 'ngx-bootstrap';
 import { AppComponent } from './app.component';
-import {  } from 'ngx-bootstrap';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AuthService} from './services/auth.service';
