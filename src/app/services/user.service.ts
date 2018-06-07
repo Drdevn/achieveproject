@@ -60,7 +60,7 @@ export class UserService {
   }
 
   getGroupByAuthor(req): Observable<any> {
-    return this.http.get(this.adminconByauthor + '/' + req.id);
+    return this.http.get(this.adminconByauthor + '/' + req.id, req);
   }
 
   getToken() {

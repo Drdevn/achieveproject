@@ -74,9 +74,9 @@ export class UserPageComponent implements OnInit {
     this.userService.updateUser(addGroupDet).subscribe(res => {
     });
     this.userService.getGroupByAuthor(id).subscribe(res => {
-      this.groupId = res;
+      this.groupId = res.id;  console.log(res);
     });
-    console.log(this.groupId);
+
     this.modalRef.hide();
   }
 
