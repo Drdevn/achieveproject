@@ -19,3 +19,9 @@
   top: 5px;
   right: 5px;
 }
+
+@media (max-width: 992px) {
+  .user-information{
+    text-align: center;
+  }
+}
