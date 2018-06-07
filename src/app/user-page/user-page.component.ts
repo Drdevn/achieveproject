@@ -19,6 +19,7 @@ export class UserPageComponent implements OnInit {
   public updurl;
   public userId;
   public groupname;
+  public groupId;
   modalRef: BsModalRef;
 
   public token = localStorage.getItem('token');
@@ -32,7 +33,6 @@ export class UserPageComponent implements OnInit {
     // Дістаємо базу аватарів СТАРТ
     this.userService.getIcons().subscribe(data => {
       this.iconeList = data;
-      console.log(this.iconeList[0].name);
     });
     // Дістаємо базу аватарів КІНЕЦЬ
     this.tokenPayload = decode(this.token);
@@ -43,7 +43,6 @@ export class UserPageComponent implements OnInit {
       this.changeIcon = this.userIcon;
     });
 
-    console.log(this.userIcon);
   }
 
   openModal(template) {
@@ -66,13 +65,18 @@ export class UserPageComponent implements OnInit {
   }
 
   addNewGroup() {
-    const groupadd = {name: this.groupname};
-    const addGroupDet = {id: this.tokenPayload.subject,  groups: [{name: this.groupname, author: this.tokenPayload.subject}]} ;
-console.log(this.tokenPayload.subject);
+    const groupadd = {name: this.groupname, author: this.tokenPayload.subject};
+    const addGroupDet = {id: this.tokenPayload.subject, groups: [{name: this.groupname, author: this.tokenPayload.subject}]};
+    const id = {id: this.tokenPayload.subject};
+    console.log(this.tokenPayload.subject);
     this.userService.registerGroup(groupadd).subscribe(res => {
     });
     this.userService.updateUser(addGroupDet).subscribe(res => {
     });
+    this.userService.getGroupByAuthor(id).subscribe(res => {
+      this.groupId = res.id;  console.log(res);
+    });
+
     this.modalRef.hide();
   }
 

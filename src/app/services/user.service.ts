@@ -18,15 +18,19 @@ export class UserService {
   private getgroup = 'http://localhost:3000/api/group';
   private registergroup = 'http://localhost:3000/api/addgroup';
   private joingroup = 'http://localhost:3000/api/join';
+  private adminconByauthor = 'http://localhost:3000/api/admincon';
+
   constructor(private http: HttpClient, private router: Router) {
   }
 
   registerUser(user) {
     return this.http.post<any>(this.registerUrl, user);
   }
+
   registerGroup(req) {
     return this.http.post<any>(this.registergroup, req);
   }
+
   loginUser(user) {
     return this.http.post<any>(this.loginUrl, user);
   }
@@ -53,6 +57,10 @@ export class UserService {
 
   getGroup(req): Observable<any> {
     return this.http.get(this.getgroup + '/' + req.id);
+  }
+
+  getGroupByAuthor(req): Observable<any> {
+    return this.http.get(this.adminconByauthor + '/' + req.id, req);
   }
 
   getToken() {
