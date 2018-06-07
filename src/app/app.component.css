@@ -27,3 +27,11 @@ nav{
     margin: 0;
     width: 100%;
 }
+
+.nav-btn-panel{
+  display: flex;
+}
+
+.mypage-btn{
+  margin-right: auto;
+}
