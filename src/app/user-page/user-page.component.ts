@@ -19,6 +19,9 @@ export class UserPageComponent implements OnInit {
   public updurl;
   public userId;
   public groupname;
+  public groupId;
+  public getGroupId = <any>[];
+
   modalRef: BsModalRef;
 
   public token = localStorage.getItem('token');
@@ -32,7 +35,6 @@ export class UserPageComponent implements OnInit {
     // Дістаємо базу аватарів СТАРТ
     this.userService.getIcons().subscribe(data => {
       this.iconeList = data;
-      console.log(this.iconeList[0].name);
     });
     // Дістаємо базу аватарів КІНЕЦЬ
     this.tokenPayload = decode(this.token);
@@ -42,9 +44,27 @@ export class UserPageComponent implements OnInit {
       this.userIcon = data.icon;
       this.changeIcon = this.userIcon;
     });
+    const id = {id: this.tokenPayload.subject};
+    const result = <any>[];
+    const userId = this.tokenPayload.subject;
+    this.userService.getGroupByAuthor(id).subscribe(res => {
+      this.groupId = res;
+      this.groupId.forEach(function (group) {
+        if (group.author === userId) {
+          result.push(group);
+          // console.log(result[0]._id);
+          // console.log(idOfGroup);
+        }
+      });
+      this.userId = (result[0]._id);
+      this.addGroupId(this.userId);
 
-    console.log(this.userIcon);
+      console.log(this.userId);
+    });
+
+
   }
+
 
   openModal(template) {
     this.modalRef = this.modalService.show(template);
@@ -66,14 +86,30 @@ export class UserPageComponent implements OnInit {
   }
 
   addNewGroup() {
-    const groupadd = {name: this.groupname};
-    const addGroupDet = {id: this.tokenPayload.subject,  groups: [{name: this.groupname, author: this.tokenPayload.subject}]} ;
-console.log(this.tokenPayload.subject);
-    this.userService.registerGroup(groupadd).subscribe(res => {
-    });
+    const addGroupDet = {
+      id: this.tokenPayload.subject,
+      groups: [{name: this.groupname, author: this.tokenPayload.subject, id: this.getGroupId}]
+    };
+    const groupadd = {name: this.groupname, author: this.tokenPayload.subject,};
+
+    // console.log(this.tokenPayload.subject);
+
     this.userService.updateUser(addGroupDet).subscribe(res => {
     });
+    this.userService.registerGroup(groupadd).subscribe(res => {
+    });
+    // console.log(this.getGroupsId());
+
+
+    const pushIdToUser = this.getGroupId._id;
     this.modalRef.hide();
+  }
+
+  addGroupId(groupId) {
+    const groupAddId = {id: groupId};
+    this.userService.registerGroup(groupAddId).subscribe(res => {
+    });
+    console.log(groupId);
   }
 
 
