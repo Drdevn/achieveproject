@@ -57,9 +57,13 @@ export class UserPageComponent implements OnInit {
         }
       });
       this.userId = (result[0]._id);
-      this.addGroupId(this.userId);
+      // this.addGroupId(this.userId);
+      const updateUserId = {id: this.tokenPayload.subject,
+        groups: [{name: this.groupname, author: this.tokenPayload.subject, id: this.userId}]};
 
-      console.log(this.userId);
+      this.userService.updateUser(updateUserId).subscribe(res => {
+      });
+      console.log(result[0]._id);
     });
 
 
@@ -90,7 +94,7 @@ export class UserPageComponent implements OnInit {
       id: this.tokenPayload.subject,
       groups: [{name: this.groupname, author: this.tokenPayload.subject, id: this.getGroupId}]
     };
-    const groupadd = {name: this.groupname, author: this.tokenPayload.subject,};
+    const groupadd = {name: this.groupname, author: this.tokenPayload.subject};
 
     // console.log(this.tokenPayload.subject);
 
@@ -105,12 +109,12 @@ export class UserPageComponent implements OnInit {
     this.modalRef.hide();
   }
 
-  addGroupId(groupId) {
-    const groupAddId = {id: groupId};
-    this.userService.registerGroup(groupAddId).subscribe(res => {
-    });
-    console.log(groupId);
-  }
+  // addGroupId(groupId) {
+  //   const groupAddId = {id: groupId};
+  //   this.userService.registerGroup(groupAddId).subscribe(res => {
+  //   });
+  //   console.log(groupId);
+  // }
 
 
 }
