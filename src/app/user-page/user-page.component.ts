@@ -21,6 +21,8 @@ export class UserPageComponent implements OnInit {
   public groupname;
   public groupId;
   public getGroupId = <any>[];
+  public valid = true;
+
 
   modalRef: BsModalRef;
 
@@ -43,7 +45,19 @@ export class UserPageComponent implements OnInit {
       this.userData = data;
       this.userIcon = data.icon;
       this.changeIcon = this.userIcon;
+
+      this.userData.groups.forEach(data => {
+
+        if (data.author !== null) {
+          this.valid = false;
+        }
+
+      });
+
+
     });
+    const id = {id: this.tokenPayload.subject};
+
 
   }
 
@@ -112,7 +126,6 @@ export class UserPageComponent implements OnInit {
       });
       // console.log(this.userId);
     });
-
   }
 
   // addGroupId(groupId) {
@@ -124,3 +137,4 @@ export class UserPageComponent implements OnInit {
 
 
 }
+
