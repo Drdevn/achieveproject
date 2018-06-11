@@ -51,14 +51,8 @@ export class UserPageComponent implements OnInit {
         if (data.author !== null) {
           this.valid = false;
         }
-
       });
-
-
     });
-    const id = {id: this.tokenPayload.subject};
-
-
   }
 
 
@@ -86,7 +80,7 @@ export class UserPageComponent implements OnInit {
       id: this.tokenPayload.subject,
       groups: [{name: this.groupname, author: this.tokenPayload.subject, id: this.getGroupId}]
     };
-    const groupadd = {name: this.groupname, author: this.tokenPayload.subject,};
+    const groupadd = {name: this.groupname, author: this.tokenPayload.subject};
 
     // console.log(this.tokenPayload.subject);
 
@@ -98,11 +92,11 @@ export class UserPageComponent implements OnInit {
 
 
     const pushIdToUser = this.getGroupId._id;
-    this.getGrouoId();
+    this.getDatGroupId();
     this.modalRef.hide();
   }
 
-  getGrouoId() {
+  getDatGroupId() {
     const id = {id: this.tokenPayload.subject};
     const result = <any>[];
     const userId = this.tokenPayload.subject;
