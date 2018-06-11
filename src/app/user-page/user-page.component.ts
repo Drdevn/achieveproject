@@ -44,24 +44,6 @@ export class UserPageComponent implements OnInit {
       this.userIcon = data.icon;
       this.changeIcon = this.userIcon;
     });
-    const id = {id: this.tokenPayload.subject};
-    const result = <any>[];
-    const userId = this.tokenPayload.subject;
-    this.userService.getGroupByAuthor(id).subscribe(res => {
-      this.groupId = res;
-      this.groupId.forEach(function (group) {
-        if (group.author === userId) {
-          result.push(group);
-          // console.log(result[0]._id);
-          // console.log(idOfGroup);
-        }
-      });
-      this.userId = (result[0]._id);
-      this.addGroupId(this.userId);
-
-      console.log(this.userId);
-    });
-
 
   }
 
@@ -102,15 +84,43 @@ export class UserPageComponent implements OnInit {
 
 
     const pushIdToUser = this.getGroupId._id;
+    this.getGrouoId();
     this.modalRef.hide();
   }
 
-  addGroupId(groupId) {
-    const groupAddId = {id: groupId};
-    this.userService.registerGroup(groupAddId).subscribe(res => {
+  getGrouoId() {
+    const id = {id: this.tokenPayload.subject};
+    const result = <any>[];
+    const userId = this.tokenPayload.subject;
+    this.userService.getGroupByAuthor(id).subscribe(res => {
+      this.groupId = res;
+      this.groupId.forEach(function (group) {
+        if (group.author === userId) {
+          result.push(group);
+
+        }
+      });
+      this.userId = (result[0]._id);
+
+      const groupIdForAdmin = {
+        id: this.tokenPayload.subject,
+        groups: [{name: this.groupname, author: this.tokenPayload.subject, id: result[0]._id}]
+      };
+
+      console.log(result[0]._id);
+      this.userService.updateUser(groupIdForAdmin).subscribe(res => {
+      });
+      // console.log(this.userId);
     });
-    console.log(groupId);
+
   }
+
+  // addGroupId(groupId) {
+  //   const groupAddId = {id: groupId};
+  //   this.userService.registerGroup(groupAddId).subscribe(res => {
+  //   });
+  //   console.log(groupId);
+  // }
 
 
 }
