@@ -10,6 +10,7 @@ export class AchiveComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

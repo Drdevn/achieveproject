@@ -1,0 +1,58 @@
+body{
+  margin: 0;
+}
+.achievecontainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  width: 300px;
+  flex: 1 1 300px;
+  margin-top: 15px;
+  border: 1px solid #4ecca3;
+  /*color: #00204a;*/
+}
+.toolbox{
+  display: flex;
+  margin: 10px;
+}
+.lois{
+  color: azure;
+  margin: 0;
+  transition: 0.3s linear;
+  text-transform: uppercase;
+}
+.lois:hover{
+  color: lightseagreen;
+}
+.submit:hover{
+  color: #4ecca3;
+}
+.achieve{
+  width:100%;
+  text-align: center;
+}
+.name{
+  background-color: #fecea8;
+}
+.content{
+  background-color: #ff847c;
+}
+.reward{
+  background-color: #e84a5f;
+}
+.toolbox{
+  width: 100%;
+  margin: 0;
+  background-color: #2a363b;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.submit{
+  font-size: 17px;
+  text-transform: uppercase;
+  transition: 0.3s linear;
+  margin: 0;
+}
