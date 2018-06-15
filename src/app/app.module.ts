@@ -13,6 +13,7 @@ import { UserService } from './services/user.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     ButtonsModule.forRoot(),
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
+    TypeaheadModule.forRoot(),
     AngularFireDatabaseModule,
     FormsModule,
     HttpClientModule,

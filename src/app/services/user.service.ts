@@ -19,6 +19,7 @@ export class UserService {
   private registergroup = 'http://localhost:3000/api/addgroup';
   private joingroup = 'http://localhost:3000/api/join';
   private adminconByauthor = 'http://localhost:3000/api/admincon';
+  private getGroupsListHTTP = 'http://localhost:3000/api/grouplist'
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -82,5 +83,9 @@ export class UserService {
 
   getAchieve() {
     return this.http.get(this.getach);
+  }
+
+  getGroupsList(){
+    return this.http.get(this.getGroupsListHTTP);
   }
 }

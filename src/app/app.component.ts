@@ -3,6 +3,7 @@ import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {UserService} from './services/user.service';
 import {Router} from '@angular/router';
+import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,10 @@ export class AppComponent {
   public password;
   public validpassword;
 
+  public groupsList = <any>{};
+  public serchField: string;
+
+
   modalRef: BsModalRef;
 
   constructor(private modalService: BsModalService,
@@ -31,7 +36,7 @@ export class AppComponent {
 
   ngOnInit() {
 
-
+    this.getGroupsList();
   }
 
 
@@ -77,6 +82,18 @@ export class AppComponent {
       );
     this.modalRef.hide();
     this.cleaner();
+  }
+
+  getGroupsList() {
+    this.userserv.getGroupsList().subscribe(list => {
+      this.groupsList = list;
+      console.log(list);
+    });
+  }
+
+  selectedGroup(event: TypeaheadMatch) {
+    this.router.navigate(['/groups/', event.item._id]);
+
   }
 
 
