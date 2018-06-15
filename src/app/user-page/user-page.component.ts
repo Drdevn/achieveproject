@@ -3,6 +3,7 @@ import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {UserService} from '../services/user.service';
 import * as decode from 'jwt-decode';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class UserPageComponent implements OnInit {
   public token = localStorage.getItem('token');
   public tokenPayload = <any>{};
 
-  constructor(private modalService: BsModalService, private userService: UserService) {
+  constructor(private modalService: BsModalService, private userService: UserService, private router: Router) {
   }
 
 
@@ -128,7 +129,10 @@ export class UserPageComponent implements OnInit {
   //   });
   //   console.log(groupId);
   // }
-
+  groupNavigate(id) {
+    console.log(id)
+    this.router.navigate(['/groups/', id]);
+  }
 
 }
 
