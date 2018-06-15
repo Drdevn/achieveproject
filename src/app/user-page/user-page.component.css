@@ -20,6 +20,11 @@
   right: 5px;
 }
 
+.one-group-from-list :hover{
+  color: #4ecca3;
+  cursor: pointer;
+}
+
 @media (max-width: 992px) {
   .user-information{
     text-align: center;
