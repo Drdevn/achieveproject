@@ -7,9 +7,20 @@
     <div class="row">
       <div class="col-lg-12 nav-btn-panel">
         <button class="btn btn-outline-info btn-cast mypage-btn" *ngIf="userserv.loggedIn()" (click)="userserv.goToUserPage()">My page</button>
+
+        <input [(ngModel)]="serchField"
+               [typeahead]="groupsList"
+               *ngIf="userserv.loggedIn()"
+               [typeaheadOptionsLimit]="7"
+               placeholder="Find groups"
+               typeaheadOptionField="name"
+               (typeaheadOnSelect)="selectedGroup($event)"
+               class="form-control group-serch-form">
+
         <button class="btn btn-outline-info btn-cast" *ngIf="!userserv.loggedIn()" (click)="openModal(login)">Login</button>
         <button class="btn btn-outline-info btn-cast" *ngIf="!userserv.loggedIn()" (click)="openModal(singup)">Sing up</button>
         <button class="btn btn-outline-info btn-cast" *ngIf="userserv.loggedIn()" (click)="userserv.logoutUser()">Logout</button>
+
       </div>
     </div>
 
