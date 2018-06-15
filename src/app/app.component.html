@@ -12,6 +12,7 @@
                [typeahead]="groupsList"
                *ngIf="userserv.loggedIn()"
                [typeaheadOptionsLimit]="7"
+               [typeaheadMinLength]="0"
                placeholder="Find groups"
                typeaheadOptionField="name"
                (typeaheadOnSelect)="selectedGroup($event)"
