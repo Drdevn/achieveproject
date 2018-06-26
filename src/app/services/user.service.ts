@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {IUser} from '../models/user';
 import {Router} from '@angular/router';
 
+
 @Injectable()
 export class UserService {
   public userurl = 'http://localhost:3000';
@@ -89,7 +90,7 @@ export class UserService {
     return this.http.get(this.getach);
   }
 
-  getGroupsList(){
+  getGroupsList() {
     return this.http.get(this.getGroupsListHTTP);
   }
 }
