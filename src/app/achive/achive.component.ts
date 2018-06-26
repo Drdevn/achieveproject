@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../services/user.service';
+
 
 @Component({
   selector: 'app-achive',
@@ -7,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AchiveComponent implements OnInit {
 
-  constructor() { }
+  public achname;
+  public achcontent;
+  public achreward = '+ Respect';
+
+  constructor(private userserv: UserService) {
+  }
 
   ngOnInit() {
 
   }
 
+  getThoseModels() {
+    const myobj = {name: this.achname, content: this.achcontent, reward: this.achreward};
+    this.userserv.postAchieve(myobj).subscribe(res => {
+    });
+  }
 }

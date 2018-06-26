@@ -7,3 +7,12 @@
     <div><p class="submit">Submit</p></div>
   </div>
 </div>
+
+<div class="achievecontainer">
+  <div class="achieve name"><input type="text" class="achieve name" [(ngModel)]="achname"></div>
+  <div class="achieve content"><input type="text" class="achieve content" [(ngModel)]="achcontent"></div>
+  <div class="achieve reward"><input type="text" class="achieve reward" [(ngModel)]="achreward"></div>
+  <div class="toolbox">
+    <div><p class="okbut" (click)="getThoseModels()">Confirm</p></div>
+  </div>
+</div>
