@@ -73,6 +73,10 @@ export class UserService {
     this.router.navigate(['/front-page']);
   }
 
+  goToFrontPage() {
+    this.router.navigate(['/front-page']);
+  }
+
   goToUserPage() {
     this.router.navigate(['/userpage']);
   }
