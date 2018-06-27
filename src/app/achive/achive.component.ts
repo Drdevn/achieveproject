@@ -12,6 +12,7 @@ export class AchiveComponent implements OnInit {
   public achname;
   public achcontent;
   public achreward = '+ Respect';
+  public value;
 
   constructor(private userserv: UserService) {
   }
@@ -21,7 +22,7 @@ export class AchiveComponent implements OnInit {
   }
 
   getThoseModels() {
-    const myobj = {name: this.achname, content: this.achcontent, reward: this.achreward};
+    const myobj = {name: this.achname, content: this.achcontent, reward: this.achreward, value: this.value};
     this.userserv.postAchieve(myobj).subscribe(res => {
     });
   }
