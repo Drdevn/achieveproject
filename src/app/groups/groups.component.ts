@@ -21,32 +21,44 @@ export class GroupsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(param => {
-      console.log(param);
       this.userService.getGroup(param).subscribe(data => {
-        console.log(data);
         this.groupData = data;
 
       });
     });
     this.tokenPayload = decode(this.token);
 
+    this.submitCheck();
   }
   groupSubscribe() {
     const datId = {id: this.tokenPayload.subject};
     this.userService.getUser(datId).subscribe(data => {
       this.userInfo = data;
       this.groupsListUpdate = this.userInfo.groups;
-      console.log('data', data);
-      console.log(this.userInfo);
-      console.log('rwerew');
       this.groupsListUpdate.push({name: this.groupData.name, author: this.groupData.author, id: this.groupData._id});
-      console.log(this.groupsListUpdate);
       const request = {id: this.tokenPayload.subject, groups: this.groupsListUpdate};
       this.userService.updateUser(request).subscribe(res => {
       });
     });
 
-    console.log(this.userInfo);
+  }
+
+  submitCheck() {
+    const myid = {id: this.tokenPayload.subject}
+    this.userService.getUser(myid).subscribe(data => {
+      console.log(this.groupData);
+      // console.log(data.groups)
+      for (let i = 0; i < data.groups.length; i++) {
+        if ( data.groups[i].id === this.groupData._id) {
+          console.log(' ee');
+          this.subscribed = false;
+          return false;
+        } else {
+          console.log(' ss');
+          this.subscribed = true;
+        }
+      }
+    });
 
   }
 
