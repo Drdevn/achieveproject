@@ -20,7 +20,8 @@ export class UserService {
   private registergroup = 'http://localhost:3000/api/addgroup';
   private joingroup = 'http://localhost:3000/api/join';
   private adminconByauthor = 'http://localhost:3000/api/admincon';
-  private getGroupsListHTTP = 'http://localhost:3000/api/grouplist'
+  private getGroupsListHTTP = 'http://localhost:3000/api/grouplist';
+  private modifyAchieves = 'http://localhost:3000/api/modifyachieve';
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -43,6 +44,10 @@ export class UserService {
 
   joinGroup(req) {
     return this.http.put<any>(this.joingroup + '/' + req.id, req);
+  }
+
+  modifyAchieve(req) {
+    return this.http.put(this.modifyAchieves + '/' + req.id, req);
   }
 
   loggedIn() {
@@ -93,4 +98,6 @@ export class UserService {
   getGroupsList() {
     return this.http.get(this.getGroupsListHTTP);
   }
+
+
 }
