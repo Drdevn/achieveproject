@@ -27,7 +27,6 @@ export class GroupsComponent implements OnInit {
       });
     });
     this.tokenPayload = decode(this.token);
-
     this.submitCheck();
   }
   groupSubscribe() {
@@ -50,11 +49,9 @@ export class GroupsComponent implements OnInit {
       // console.log(data.groups)
       for (let i = 0; i < data.groups.length; i++) {
         if ( data.groups[i].id === this.groupData._id) {
-          console.log(' ee');
           this.subscribed = false;
           return false;
         } else {
-          console.log(' ss');
           this.subscribed = true;
         }
       }
@@ -62,5 +59,24 @@ export class GroupsComponent implements OnInit {
 
   }
 
+  groupUnsubscribe(){
+    const datId = {id: this.tokenPayload.subject}
+    this.userService.getUser(datId).subscribe(data => {
+      this.userInfo = data.groups;
+
+      console.log(this.userInfo);
+      for (let i = 0; i < this.userInfo.length; i++) {
+        if (this.userInfo[i].id === this.groupData._id) {
+          this.userInfo.splice( i, 1);
+        } else {
+          console.log('tu pidar');
+        }
+      }
+      const request = {id: this.tokenPayload.subject, groups: this.userInfo};
+      this.userService.updateUser(request).subscribe(res => {
+      });
+    });
+
+  }
 
 }
