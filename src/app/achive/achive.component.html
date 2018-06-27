@@ -1,9 +1,9 @@
-<div class="achievecontainer">
-  <div class="achieve name">GO FORTH </div>
-  <div class="achieve content">BE CONQUEROR</div>
-  <div class="achieve reward">GO FORTH AND DIE</div>
+<div class="achievecontainer {{achieve.value}}" *ngFor="let achieve of getAchieve">
+  <div class="achieve name">{{achieve.name}}</div>
+  <div class="achieve content">{{achieve.content}}</div>
+  <div class="achieve reward">{{achieve.reward}}</div>
   <div class="toolbox">
-    <div><p class="lois">Like</p></div>
+    <div><p class="lois" (click)="giveLukas(achieve._id)">Like</p></div>
     <div><p class="submit">Submit</p></div>
   </div>
 </div>
@@ -24,3 +24,4 @@
     </div>
 </div>
   </div>
+

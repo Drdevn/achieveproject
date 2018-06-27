@@ -13,7 +13,7 @@ export class GroupsComponent implements OnInit {
 
   public token = localStorage.getItem('token');
   public tokenPayload = <any>{};
-
+  public subscribed = true;
   public userInfo;
   public groupsListUpdate = [];
 
@@ -30,12 +30,9 @@ export class GroupsComponent implements OnInit {
 
       });
     });
-
     this.tokenPayload = decode(this.token);
 
-
   }
-
   groupSubscribe() {
     const datId = {id: this.tokenPayload.subject}
     this.userService.getUser(datId).subscribe(data => {
