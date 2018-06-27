@@ -1,4 +1,4 @@
-import {Component, TemplateRef} from '@angular/core';
+import {Component, TemplateRef, OnInit} from '@angular/core';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {UserService} from './services/user.service';
@@ -10,7 +10,7 @@ import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
 
 
@@ -87,7 +87,7 @@ export class AppComponent {
   getGroupsList() {
     this.userserv.getGroupsList().subscribe(list => {
       this.groupsList = list;
-      console.log(list);
+      // console.log(list);
     });
   }
 

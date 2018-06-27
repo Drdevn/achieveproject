@@ -5,10 +5,10 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-sizing: border-box;
+  /*box-sizing: border-box;*/
   padding: 0;
   width: 300px;
-  flex: 1 1 300px;
+/*  flex: 1 1 300px;*/
   margin-top: 15px;
   border: 1px solid #4ecca3;
   /*color: #00204a;*/
@@ -17,10 +17,10 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-sizing: border-box;
+  /*box-sizing: border-box;*/
   padding: 0;
   width: 300px;
-  flex: 1 1 300px;
+/*  flex: 1 1 300px;*/
   margin-top: 15px;
   border: 1px solid #4ecca3;
 }
@@ -45,13 +45,11 @@ body{
   text-align: center;
 }
 .name{
-  background-color: #fecea8;
 }
 .content{
-  background-color: #ff847c;
 }
 .reward{
-  background-color: #e84a5f;
+
 }
 .toolbox{
   width: 100%;
@@ -76,5 +74,22 @@ body{
 }
 .okbut:hover{
   color: #4ecca3;
-  
+
 }
+.change-achieve-value{
+  display: flex;
+
+}
+.legend{
+  padding: 0 !important;
+  width: 100%;
+  font-size: 21px;
+  text-align: center;
+  border-bottom: 1px solid #4ecca3;
+}
+.change-achieve-value input {
+  margin-left: 5px;
+}
+.change-achieve-value-input{
+}
+
