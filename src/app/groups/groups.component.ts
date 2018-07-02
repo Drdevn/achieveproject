@@ -12,22 +12,29 @@ export class GroupsComponent implements OnInit {
   public groupData = <any>{};
   public token = localStorage.getItem('token');
   public tokenPayload = <any>{};
-  public subscribed = true;
+  public subscribed;
   public userInfo;
   public groupsListUpdate = [];
+
   constructor(private userService: UserService,
               private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.OnInitData();
+    this.tokenPayload = decode(this.token);
+
+    console.log(this.subscribed);
+  }
+
+  OnInitData() {
     this.route.params.subscribe(param => {
       this.userService.getGroup(param).subscribe(data => {
         this.groupData = data;
-
+        this.submitCheck();
       });
     });
-    this.tokenPayload = decode(this.token);
-    this.submitCheck();
+
   }
 
   groupSubscribe() {
@@ -47,26 +54,15 @@ export class GroupsComponent implements OnInit {
   submitCheck() {
     const myid = {id: this.tokenPayload.subject};
     this.userService.getUser(myid).subscribe(data => {
-      console.log(this.groupData);
-      // console.log(data.groups)
-      data.groups.forEach(group => {
-        if (group.id === this.groupData._id) {
+      console.log(this.groupData._id);
+      for (let i = 0; i < data.groups.length; i++) {
+        if (data.groups[i].id === this.groupData._id) {
           this.subscribed = false;
-          return false;
-      } else {
+          break;
+        } else {
           this.subscribed = true;
         }
-      });
-
-
-      // for (let i = 0; i < data.groups.length; i++) {
-      //   if ( data.groups[i].id === this.groupData._id) {
-      //     this.subscribed = false;
-      //     return false;
-      //   } else {
-      //     this.subscribed = true;
-      //   }
-      // }
+      }
     });
 
   }
@@ -79,7 +75,7 @@ export class GroupsComponent implements OnInit {
       console.log(this.userInfo);
       for (let i = 0; i < this.userInfo.length; i++) {
         if (this.userInfo[i].id === this.groupData._id) {
-          this.userInfo.splice( i, 1);
+          this.userInfo.splice(i, 1);
         } else {
           console.log('tu pidar');
         }
