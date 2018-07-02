@@ -39,7 +39,7 @@ export class GroupsComponent implements OnInit {
       this.userService.updateUser(request).subscribe(res => {
       });
     });
-
+    this.submitCheck();
   }
 
   submitCheck() {
@@ -47,14 +47,24 @@ export class GroupsComponent implements OnInit {
     this.userService.getUser(myid).subscribe(data => {
       console.log(this.groupData);
       // console.log(data.groups)
-      for (let i = 0; i < data.groups.length; i++) {
-        if ( data.groups[i].id === this.groupData._id) {
+      data.groups.forEach(group => {
+        if (group.id === this.groupData._id) {
           this.subscribed = false;
           return false;
-        } else {
+      } else {
           this.subscribed = true;
         }
-      }
+      });
+
+
+      // for (let i = 0; i < data.groups.length; i++) {
+      //   if ( data.groups[i].id === this.groupData._id) {
+      //     this.subscribed = false;
+      //     return false;
+      //   } else {
+      //     this.subscribed = true;
+      //   }
+      // }
     });
 
   }
@@ -76,6 +86,7 @@ export class GroupsComponent implements OnInit {
       this.userService.updateUser(request).subscribe(res => {
       });
     });
+    this.submitCheck();
 
   }
 
