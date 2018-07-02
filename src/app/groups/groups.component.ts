@@ -10,13 +10,11 @@ import * as decode from 'jwt-decode';
 })
 export class GroupsComponent implements OnInit {
   public groupData = <any>{};
-
   public token = localStorage.getItem('token');
   public tokenPayload = <any>{};
   public subscribed = true;
   public userInfo;
   public groupsListUpdate = [];
-
   constructor(private userService: UserService,
               private route: ActivatedRoute) {
   }
@@ -32,7 +30,7 @@ export class GroupsComponent implements OnInit {
     this.submitCheck();
   }
   groupSubscribe() {
-    const datId = {id: this.tokenPayload.subject}
+    const datId = {id: this.tokenPayload.subject};
     this.userService.getUser(datId).subscribe(data => {
       this.userInfo = data;
       this.groupsListUpdate = this.userInfo.groups;
@@ -45,7 +43,7 @@ export class GroupsComponent implements OnInit {
   }
 
   submitCheck() {
-    const myid = {id: this.tokenPayload.subject}
+    const myid = {id: this.tokenPayload.subject};
     this.userService.getUser(myid).subscribe(data => {
       console.log(this.groupData);
       // console.log(data.groups)
@@ -61,8 +59,8 @@ export class GroupsComponent implements OnInit {
 
   }
 
-  groupUnsubscribe(){
-    const datId = {id: this.tokenPayload.subject}
+  groupUnsubscribe() {
+    const datId = {id: this.tokenPayload.subject};
     this.userService.getUser(datId).subscribe(data => {
       this.userInfo = data.groups;
 
