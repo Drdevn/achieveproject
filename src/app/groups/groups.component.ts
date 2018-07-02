@@ -53,6 +53,7 @@ export class GroupsComponent implements OnInit {
           return false;
       } else {
           this.subscribed = true;
+
         }
       });
 
@@ -73,7 +74,6 @@ export class GroupsComponent implements OnInit {
     const datId = {id: this.tokenPayload.subject};
     this.userService.getUser(datId).subscribe(data => {
       this.userInfo = data.groups;
-
       console.log(this.userInfo);
       for (let i = 0; i < this.userInfo.length; i++) {
         if (this.userInfo[i].id === this.groupData._id) {
