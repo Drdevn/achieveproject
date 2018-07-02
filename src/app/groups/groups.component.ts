@@ -29,6 +29,7 @@ export class GroupsComponent implements OnInit {
     this.tokenPayload = decode(this.token);
     this.submitCheck();
   }
+
   groupSubscribe() {
     const datId = {id: this.tokenPayload.subject};
     this.userService.getUser(datId).subscribe(data => {
@@ -39,7 +40,8 @@ export class GroupsComponent implements OnInit {
       this.userService.updateUser(request).subscribe(res => {
       });
     });
-    this.submitCheck();
+    this.subscribed = false;
+
   }
 
   submitCheck() {
@@ -86,7 +88,7 @@ export class GroupsComponent implements OnInit {
       this.userService.updateUser(request).subscribe(res => {
       });
     });
-    this.submitCheck();
+    this.subscribed = true;
 
   }
 
