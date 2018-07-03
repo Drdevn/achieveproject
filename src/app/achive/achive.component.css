@@ -65,6 +65,7 @@ body{
   text-transform: uppercase;
   transition: 0.3s linear;
   margin: 0;
+  cursor: pointer;
 }
 .okbut{
   font-size: 17px;
