@@ -66,6 +66,10 @@ export class UserService {
     return this.http.get(this.getgroup + '/' + req.id);
   }
 
+  getAchievesById(req): Observable<any> {
+    return this.http.get(this.getach + '/' + req.id);
+  }
+
   getGroupByAuthor(req): Observable<any> {
     return this.http.get(this.adminconByauthor + '/' + req.id, req);
   }

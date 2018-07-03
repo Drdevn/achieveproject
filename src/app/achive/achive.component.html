@@ -4,7 +4,7 @@
   <div class="achieve reward">{{achieve.reward}}</div>
   <div class="toolbox">
     <div><p class="lois" (click)="giveLukas(achieve._id)">Like</p></div>
-    <div><p class="submit">Submit</p></div>
+    <div><p class="submit" (click)="submitAchieve(achieve._id)" *ngIf="!alreadySubbed">Submit</p></div>
   </div>
 </div>
 
@@ -20,7 +20,7 @@
     <div class="col-6 change-achieve-value-input"><label for="rare">Rare</label><input type="radio" id="rare" name="quality" value="rare" [(ngModel)]="value"></div>
     <div class="col-6 change-achieve-value-input"><label for="epic">Epic</label> <input type="radio" id="epic" name="quality" value="epic" [(ngModel)]="value"></div>
     <div class="toolbox">
-      <div><p class="okbut" (click)="getThoseModels()">Confirm</p></div>
+      <div><p class="okbut" (click)="createAchieve()">Confirm</p></div>
     </div>
 </div>
   </div>
