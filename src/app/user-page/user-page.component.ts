@@ -46,9 +46,7 @@ export class UserPageComponent implements OnInit {
       this.userData = data;
       this.userIcon = data.icon;
       this.changeIcon = this.userIcon;
-
       this.userData.groups.forEach(data => {
-
         if (data.author !== null) {
           this.valid = false;
         }
@@ -83,18 +81,17 @@ export class UserPageComponent implements OnInit {
     };
     const groupadd = {name: this.groupname, author: this.tokenPayload.subject};
 
-    // console.log(this.tokenPayload.subject);
 
     this.userService.updateUser(addGroupDet).subscribe(res => {
     });
     this.userService.registerGroup(groupadd).subscribe(res => {
     });
-    // console.log(this.getGroupsId());
 
 
     const pushIdToUser = this.getGroupId._id;
     this.getDatGroupId();
     this.modalRef.hide();
+    this.ngOnInit();
   }
 
   getDatGroupId() {
@@ -119,18 +116,10 @@ export class UserPageComponent implements OnInit {
       console.log(result[0]._id);
       this.userService.updateUser(groupIdForAdmin).subscribe(res => {
       });
-      // console.log(this.userId);
     });
   }
 
-  // addGroupId(groupId) {
-  //   const groupAddId = {id: groupId};
-  //   this.userService.registerGroup(groupAddId).subscribe(res => {
-  //   });
-  //   console.log(groupId);
-  // }
   groupNavigate(id) {
-    console.log(id)
     this.router.navigate(['/groups/', id]);
   }
 
