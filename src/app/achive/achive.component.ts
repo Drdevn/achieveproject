@@ -39,7 +39,7 @@ export class AchiveComponent implements OnInit {
       this.achInfo = data;
       if (this.achInfo.users.author !== null) {
         // const submitData = {};
-        this.achInfo.users.push({id: this.tokenPayload.subject, author: this.achInfo.users.author}) ;
+        this.achInfo.users.push({id: this.tokenPayload.subject, author: this.achInfo.users.author});
         const request = {id: idn, users: this.achInfo.users};
         console.log(this.achInfo.users);
         this.userserv.modifyAchieve(request).subscribe(res => {
