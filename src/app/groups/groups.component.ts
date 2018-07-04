@@ -12,7 +12,7 @@ export class GroupsComponent implements OnInit {
   public groupData = <any>{};
   public token = localStorage.getItem('token');
   public tokenPayload = <any>{};
-  public subscribed;
+  public subscribed = true;
   public userInfo;
   public groupsListUpdate = [];
 
