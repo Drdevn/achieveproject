@@ -19,7 +19,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
   ],
   imports: [
     BrowserModule,

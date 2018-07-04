@@ -52,7 +52,8 @@ export class AppComponent implements OnInit {
     userdata = {
       username: this.username,
       email: this.email,
-      password: this.password, counter: '0', icon: 'avatar.svg'
+      password: this.password, counter: '0', icon: 'avatar.svg',
+      achieves: [{name: 'Thanks For Registration!'}]
     };
     this.userserv.registerUser(userdata)
       .subscribe(
