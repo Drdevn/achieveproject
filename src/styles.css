@@ -11,7 +11,9 @@ body{
 .btn-cast{
     border-color: #4ecca3;
     color: #4ecca3;
+    margin-right: 5px;
 }
+
 .btn-cast:hover{
     background-color: #4ecca3;
     color: #EEEEEE;
