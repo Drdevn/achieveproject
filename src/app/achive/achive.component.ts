@@ -41,48 +41,16 @@ export class AchiveComponent implements OnInit {
     const achieveId = {id: id};
     this.userserv.getAchievesById(achieveId).subscribe(data => {
       this.achInfo = data;
-      let check = true;
-      let i = 0;
-      try {
-        do {
-          console.log(this.achInfo.users);
-
-          if (this.achInfo.users.length !== 0 && this.achInfo.users[i].id === this.tokenPayload.subject) {
-            console.log('updated ' + check);
-            check = false;
-            break;
-          } else if (this.achInfo.users.length === 0 )  {
-            check = true;
-            console.log('breaked ' + check);
-            break;
-          } else {
-            check = true;
-            console.log(check + 'wtf');
-          }
-          i++;
-        }
-        while (i < this.achInfo.users.length) ;
-
-        if (check) {
-          console.log(check);
-          this.achInfo.users.push({id: this.tokenPayload.subject});
-          this.userDetails = {id: this.achInfo._id, users: this.achInfo.users};
-          this.userserv.modifyAchieve(this.userDetails).subscribe(res => {
-          });
-        }
-
-      } catch (err) {
-        if (check) {
-          console.log(check);
-          this.achInfo.users.push({id: this.tokenPayload.subject});
-          this.userDetails = {id: this.achInfo._id, users: this.achInfo.users};
-          this.userserv.modifyAchieve(this.userDetails).subscribe(res => {
-          });
-
-        }
+      const ora = this.achInfo.users.filter(user => user.id === this.tokenPayload.subject);
+      if ( ora.length === 0 ) {
+        this.achInfo.users.push({id: this.tokenPayload.subject});
+            this.userDetails = {id: this.achInfo._id, users: this.achInfo.users};
+            this.userserv.modifyAchieve(this.userDetails).subscribe(res => {
+            });
+      } else {
+        console.log('np');
       }
     });
-
   }
 
   achieveSubmitToUser(achDet) {
