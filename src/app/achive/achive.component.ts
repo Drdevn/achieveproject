@@ -46,8 +46,9 @@ export class AchiveComponent implements OnInit {
           this.achInfo.users.push({ id: this.tokenPayload.subject});
            const modifiedAch = {id: this.achInfo._id, };
           console.log('updated');
-        this.userserv.modifyAchieve(modifiedAch).subscribe(res => {
+        this.userserv.modifyAchieve({id: id,  users: this.achInfo.users}).subscribe(res => {
         });
+        break;
         } else {
           console.log('breaked');
           break;
