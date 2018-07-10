@@ -11,9 +11,6 @@ import {_catch} from 'rxjs/operator/catch';
 })
 export class AchiveComponent implements OnInit {
   @Input() groupId: string;
-  public achname;
-  public achcontent;
-  public achreward = '+ Respect';
   public value;
   public getAchieve;
   public lukas = 0;
@@ -80,13 +77,5 @@ export class AchiveComponent implements OnInit {
 
   }
 
-  createAchieve() {
-    const myobj = {
-      name: this.achname, content: this.achcontent, reward: this.achreward,
-      value: this.value, author: this.tokenPayload.subject, users: []
-    };
-    console.log(myobj);
-    this.userserv.postAchieve(myobj).subscribe(res => {
-    });
-  }
+
 }

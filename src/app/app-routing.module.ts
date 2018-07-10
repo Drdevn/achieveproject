@@ -7,6 +7,7 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { AuthGuard } from './auth.guard';
 import { AchiveComponent } from './achive/achive.component';
 import {GroupsComponent} from './groups/groups.component';
+import {AchieveCreateComponent} from './achieve-create/achieve-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/front-page', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'userpage', component: UserPageComponent, canActivate: [AuthGuard]},
   { path: 'achieves', component: AchiveComponent},
   { path: 'groups/:id', component: GroupsComponent},
+  { path: 'achieve-create', component: AchieveCreateComponent },
   { path: '**', component: PageNotFoundComponent }
 
 ];
@@ -28,5 +30,6 @@ export const routingComponents = [
   UserPageComponent,
   AchiveComponent,
   GroupsComponent,
+  AchieveCreateComponent,
   PageNotFoundComponent
 ];
