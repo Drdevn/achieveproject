@@ -4,6 +4,7 @@ import * as decode from 'jwt-decode';
 import {_catch} from 'rxjs/operator/catch';
 
 
+
 @Component({
   selector: 'app-achive',
   templateUrl: './achive.component.html',
@@ -40,50 +41,14 @@ export class AchiveComponent implements OnInit {
   submitAchieve(id) {
     const achieveId = {id: id};
     this.userserv.getAchievesById(achieveId).subscribe(data => {
+    this.achInfo = data;
 
-      for (let i = 0; i <= this.achInfo.users.length; i++) {
-        console.log(this.achInfo.users[i]);
-        if (this.achInfo.users[i] === undefined  || this.achInfo.users[i].id !== this.tokenPayload.subject) {
-          this.achInfo.users.push({ id: this.tokenPayload.subject});
-           const modifiedAch = {id: this.achInfo._id, };
-          console.log('updated');
-        this.userserv.modifyAchieve({id: id,  users: this.achInfo.users}).subscribe(res => {
-        });
-        break;
-        } else {
-          console.log('breaked');
-          break;
+    let result = this.achInfo.users.filter( user =>
+      user !== this.tokenPayload.subject
 
-      let check = false;
-      let i = 0;
-      try {
-      do {
-        console.log(this.achInfo.users);
-
-          if (this.achInfo.users.length !== 0 || this.achInfo.users[i].id === this.tokenPayload.subject
-            || this.achInfo.users[i].id !== undefined) {
-            console.log('updated ' + check);
-            check = false;
-            break;
-          } else {
-            check = true;
-            console.log('breaked ' + check);
-          }
-          i++;
-        }
-        while (i < this.achInfo.users.length) ;
-      } catch (err) {
-        if (check) {
-          this.achInfo.users.push({id: this.tokenPayload.subject});
-          this.userDetails = {id: this.achInfo._id, users: this.achInfo.users};
-          this.userserv.modifyAchieve(this.userDetails).subscribe(res => {
-          });
-
-
-        }
-      }
+    );
+  console.log(result);
     });
-
   }
 
   achieveSubmitToUser(achDet) {
