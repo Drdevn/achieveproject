@@ -16,10 +16,12 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
+
   ],
   imports: [
     BrowserModule,

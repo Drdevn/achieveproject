@@ -1,0 +1,16 @@
+<div class="achievecontainer">
+  <div class="achieve name"><input type="text" class="achieve name" placeholder="Achievement Name" [(ngModel)]="achname"></div>
+  <div class="achieve content"><input type="text" class="achieve content" placeholder="Achievement Content" [(ngModel)]="achcontent"></div>
+  <div class="achieve reward"><input type="text" class="achieve reward" [(ngModel)]="achreward"></div>
+  <div class="container">
+    <div class="change-achieve-value row">
+      <div class="col-12 legend">Choose quality of achievement</div>
+      <div class="col-6 change-achieve-value-input"><label for="common">Common</label> <input type="radio" id="common" name="quality" value="common" [(ngModel)]="value" checked></div>
+      <div class="col-6 change-achieve-value-input"><label for="uncommon">Uncommon</label><input type="radio" id="uncommon" name="quality" value="uncommon" [(ngModel)]="value"></div>
+      <div class="col-6 change-achieve-value-input"><label for="rare">Rare</label><input type="radio" id="rare" name="quality" value="rare" [(ngModel)]="value"></div>
+      <div class="col-6 change-achieve-value-input"><label for="epic">Epic</label> <input type="radio" id="epic" name="quality" value="epic" [(ngModel)]="value"></div>
+      <div class="toolbox">
+        <div><p class="okbut" (click)="createAchieve()">Confirm</p></div>
+      </div>
+    </div>
+  </div>
