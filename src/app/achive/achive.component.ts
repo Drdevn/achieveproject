@@ -4,7 +4,6 @@ import * as decode from 'jwt-decode';
 import {_catch} from 'rxjs/operator/catch';
 
 
-
 @Component({
   selector: 'app-achive',
   templateUrl: './achive.component.html',
@@ -41,13 +40,16 @@ export class AchiveComponent implements OnInit {
   submitAchieve(id) {
     const achieveId = {id: id};
     this.userserv.getAchievesById(achieveId).subscribe(data => {
-    this.achInfo = data;
-
-    let result = this.achInfo.users.filter( user =>
-      user !== this.tokenPayload.subject
-
-    );
-  console.log(result);
+      this.achInfo = data;
+      const ora = this.achInfo.users.filter(user => user.id === this.tokenPayload.subject);
+      if ( ora.length === 0 ) {
+        this.achInfo.users.push({id: this.tokenPayload.subject});
+            this.userDetails = {id: this.achInfo._id, users: this.achInfo.users};
+            this.userserv.modifyAchieve(this.userDetails).subscribe(res => {
+            });
+      } else {
+        console.log('np');
+      }
     });
   }
 
