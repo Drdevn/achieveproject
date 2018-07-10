@@ -20,9 +20,10 @@ export class AchiveComponent implements OnInit {
   public token = localStorage.getItem('token');
   public tokenPayload = <any>{};
   public achInfo;
-  public achValid;
+  public userInfo;
   public alreadySubbed;
   public userDetails;
+  public userAchieveDetails;
 
   constructor(private userserv: UserService) {
   }
@@ -39,6 +40,7 @@ export class AchiveComponent implements OnInit {
 
   submitAchieve(id) {
     const achieveId = {id: id};
+    this.achieveSubmitToUser(id);
     this.userserv.getAchievesById(achieveId).subscribe(data => {
       this.achInfo = data;
       const ora = this.achInfo.users.filter(user => user.id === this.tokenPayload.subject);
@@ -53,8 +55,21 @@ export class AchiveComponent implements OnInit {
     });
   }
 
-  achieveSubmitToUser(achDet) {
-
+  achieveSubmitToUser(achid) {
+    const userId = {id: this.tokenPayload.subject};
+    this.userserv.getUser(userId).subscribe(data => {
+      this.userInfo = data;
+      const userAchieves = this.userInfo.achieves.filter( achieve => achieve.id === achid);
+      console.log(achid);
+      if ( userAchieves.length === 0) {
+        this.userInfo.achieves.push({id: achid});
+        this.userAchieveDetails = {id: this.tokenPayload.subject, achieves: this.userInfo.achieves};
+        this.userserv.updateUser(this.userAchieveDetails).subscribe(res => {
+        });
+      } else {
+        console.log('good');
+      }
+  });
   }
 
   giveLukas(id) {
