@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {UserService} from '../services/user.service';
 import * as decode from 'jwt-decode';
 import {_catch} from 'rxjs/operator/catch';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -22,12 +23,17 @@ export class AchiveComponent implements OnInit {
   public userDetails;
   public userAchieveDetails;
 
-  constructor(private userserv: UserService) {
+  constructor(private userserv: UserService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.userserv.getAchieve().subscribe(data => {
-      this.getAchieve = data;
+      this.achInfo = data;
+      this.route.params.subscribe( grId =>  {
+        this.getAchieve = this.achInfo.filter( ach => ach.groupId === grId.id );
+        console.log(this.getAchieve);
+      });
+      console.log(data);
     });
     // this.userserv.getUser()
     this.tokenPayload = decode(this.token);

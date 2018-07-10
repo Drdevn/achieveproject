@@ -7,10 +7,14 @@
     <div class="row">
       <div class="col-lg-4">
         <h2>Group information </h2>
-        <div style="width: 80%;display: flex; justify-content: center;">
+        <div style="width: 80%;display: flex; justify-content: center;" class="row">
           <input type="button" value="Subscribe" class="btn btn-success"  (click)="groupSubscribe()" *ngIf="subscribed" >
           <input type="button" value="Unsubscribe" class="bts btn-danger" (click)="groupUnsubscribe()" *ngIf="!subscribed">
-
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <app-achieve-create *ngIf="!subscribed"></app-achieve-create>
+          </div>
         </div>
       </div>
       <div class="col-lg-8">
@@ -19,18 +23,7 @@
             <h2>ACHIVEMENTS</h2>
           </div>
           <div class="col-lg-12">
-            <div class="row">
-              <div class="col-lg-3">
-                Name
-              </div>
-              <div class="col-lg-8">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur corporis culpa,
-                doloremque eius error et facere ipsam iste laborum modi obcaecati provident, quis quisquam rem sit tempora velit voluptas?
-              </div>
-              <div class="col-lg-1">
-                22/11/22
-              </div>
-            </div>
+            <app-achive></app-achive>
           </div>
         </div>
       </div>
@@ -41,5 +34,5 @@
 <!--<div *ngFor="let gav of userInfo">{{gav.username}}-->
 <!--</div>-->
 
-<app-achieve-create></app-achieve-create>
+
 <!---->
