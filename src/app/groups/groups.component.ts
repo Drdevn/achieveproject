@@ -23,8 +23,6 @@ export class GroupsComponent implements OnInit {
   ngOnInit() {
     this.OnInitData();
     this.tokenPayload = decode(this.token);
-
-    console.log(this.subscribed);
   }
 
   OnInitData() {

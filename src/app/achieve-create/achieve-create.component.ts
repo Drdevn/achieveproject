@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {UserService} from '../services/user.service';
+import {ActivatedRoute} from '@angular/router';
 import * as decode from 'jwt-decode';
 
 @Component({
@@ -9,10 +10,10 @@ import * as decode from 'jwt-decode';
 })
 export class AchieveCreateComponent implements OnInit {
 
-  constructor(private userserv: UserService) {
+  constructor(private userserv: UserService, private route: ActivatedRoute) {
   }
+  public groupId: any;
 
-  public groupId;
   public achname;
   public achcontent;
   public achreward = '+ Respect';
@@ -22,11 +23,15 @@ export class AchieveCreateComponent implements OnInit {
 
   ngOnInit() {
     this.tokenPayload = decode(this.token);
+    this.route.params.subscribe( data => {
+      this.groupId = data.id;
+    });
+
   }
 
   createAchieve() {
     const myobj = {
-      name: this.achname, content: this.achcontent, reward: this.achreward,
+      name: this.achname, content: this.achcontent, groupId: this.groupId, reward: this.achreward,
       value: this.value, author: this.tokenPayload.subject, users: []
     };
     console.log(myobj);
