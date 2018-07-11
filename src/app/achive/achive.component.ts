@@ -22,6 +22,8 @@ export class AchiveComponent implements OnInit {
   public alreadySubbed;
   public userDetails;
   public userAchieveDetails;
+  public submitAchAuth;
+  public submittedPayload;
 
   constructor(private userserv: UserService, private route: ActivatedRoute) {
   }
@@ -29,15 +31,12 @@ export class AchiveComponent implements OnInit {
   ngOnInit() {
     this.userserv.getAchieve().subscribe(data => {
       this.achInfo = data;
-      this.route.params.subscribe( grId =>  {
-        this.getAchieve = this.achInfo.filter( ach => ach.groupId === grId.id );
-        console.log(this.getAchieve);
+      this.route.params.subscribe(grId => {
+        this.getAchieve = this.achInfo.filter(ach => ach.groupId === grId.id);
       });
-      console.log(data);
     });
     // this.userserv.getUser()
     this.tokenPayload = decode(this.token);
-    console.log(this.tokenPayload.subject);
 
   }
 
@@ -46,14 +45,14 @@ export class AchiveComponent implements OnInit {
     this.achieveSubmitToUser(id);
     this.userserv.getAchievesById(achieveId).subscribe(data => {
       this.achInfo = data;
+      this.sendSubmDetToAutor(data);
       const ora = this.achInfo.users.filter(user => user.id === this.tokenPayload.subject);
-      if ( ora.length === 0 ) {
+      if (ora.length === 0) {
         this.achInfo.users.push({id: this.tokenPayload.subject});
-            this.userDetails = {id: this.achInfo._id, users: this.achInfo.users};
-            this.userserv.modifyAchieve(this.userDetails).subscribe(res => {
-            });
+        this.userDetails = {id: this.achInfo._id, users: this.achInfo.users};
+        this.userserv.modifyAchieve(this.userDetails).subscribe(res => {
+        });
       } else {
-        console.log('np');
       }
     });
   }
@@ -62,17 +61,33 @@ export class AchiveComponent implements OnInit {
     const userId = {id: this.tokenPayload.subject};
     this.userserv.getUser(userId).subscribe(data => {
       this.userInfo = data;
-      const userAchieves = this.userInfo.achieves.filter( achieve => achieve.id === achid);
-      console.log(achid);
-      if ( userAchieves.length === 0) {
+      const userAchieves = this.userInfo.achieves.filter(achieve => achieve.id === achid);
+      if (userAchieves.length === 0) {
         this.userInfo.achieves.push({id: achid});
         this.userAchieveDetails = {id: this.tokenPayload.subject, achieves: this.userInfo.achieves};
         this.userserv.updateUser(this.userAchieveDetails).subscribe(res => {
         });
       } else {
-        console.log('good');
       }
-  });
+    });
+  }
+
+  sendSubmDetToAutor(dat) {
+    const userId = {id: dat.author};
+    this.userserv.getUser(userId).subscribe(data => {
+      this.submitAchAuth = data;
+      if (dat.author === this.tokenPayload.subject) {
+        console.log('r u eblan? u r author');
+      } else {
+        const validSubmitAuth = this.submitAchAuth.submittedAchieves.filter( achieve => achieve.achieveId === dat._id);
+        if (validSubmitAuth.length === 0) {
+        this.submitAchAuth.submittedAchieves.push({achieveId: dat._id, userId: this.tokenPayload.subject, isSubmitted: false});
+        const idPayload = {id: dat.author, submittedAchieves: this.submitAchAuth.submittedAchieves};
+        this.userserv.updateUser(idPayload).subscribe(res => {
+        });
+        }
+      }
+    });
   }
 
   giveLukas(id) {
