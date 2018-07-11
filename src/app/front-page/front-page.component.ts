@@ -15,7 +15,6 @@ import { UserService } from '../services/user.service';
 export class FrontPageComponent implements OnInit {
   constructor(private imgser: UserService) { }
     ngOnInit() {
-      
     }
 
   }
