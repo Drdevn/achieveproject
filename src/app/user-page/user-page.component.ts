@@ -23,6 +23,9 @@ export class UserPageComponent implements OnInit {
   public groupId;
   public getGroupId = <any>[];
   public valid = true;
+  public achiveList;
+  public achiveSubmittersId;
+  public submitterAchiveList = [];
 
 
   modalRef: BsModalRef;
@@ -46,10 +49,20 @@ export class UserPageComponent implements OnInit {
       this.userData = data;
       this.userIcon = data.icon;
       this.changeIcon = this.userIcon;
-      this.userData.groups.forEach(data => {
-        if (data.author !== null) {
+      this.userData.groups.forEach(dat => {
+        if (dat.author !== null) {
           this.valid = false;
         }
+      });
+      this.achiveSubmittersId = data.submittedAchieves;
+      console.log(this.achiveSubmittersId);
+      this.userService.getAchieve().subscribe( achi => {
+        this.achiveList = achi;
+        for (let i = 0; i < this.achiveSubmittersId.length; i++) {
+          const taha = this.achiveList.filter( achiveId => achiveId._id === this.achiveSubmittersId[i].achieveId);
+          this.submitterAchiveList.push(taha[0]);
+        }
+        console.log(this.submitterAchiveList);
       });
     });
   }
