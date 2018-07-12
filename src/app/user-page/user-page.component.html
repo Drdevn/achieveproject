@@ -47,6 +47,25 @@
           <accordion-group heading="My Active Achievements">
               <p>Some content</p>
             </accordion-group>
+        <accordion-group heading="Achivements Subscribers">
+          <div class="row one-achive" *ngFor="let achive of submitterAchiveList">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+              <div class="row" style="text-align: center;">
+                <div class="col-lg-12 one-achive-name">
+                  <p>{{achive.name}}</p>
+                </div>
+                <div class="col-lg-12">
+                  <p>{{achive.content}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 one-achive-date">
+              20/13/2014
+            </div>
+          </div>
+        </accordion-group>
         </accordion>
 
   </div>
