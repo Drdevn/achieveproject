@@ -5,7 +5,6 @@ import {Observable} from 'rxjs/Observable';
 import {IUser} from '../models/user';
 import {Router} from '@angular/router';
 
-
 @Injectable()
 export class UserService {
   public userurl = 'http://localhost:3000';
