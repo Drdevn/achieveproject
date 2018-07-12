@@ -42,10 +42,11 @@ export class AchiveComponent implements OnInit {
 
   submitAchieve(id) {
     const achieveId = {id: id};
-    this.achieveSubmitToUser(id);
+    // this.achieveSubmitToUser(id);
     this.userserv.getAchievesById(achieveId).subscribe(data => {
       this.achInfo = data;
       this.sendSubmDetToAutor(data);
+      this.sendAchDetToUserSubmitted(data);
       const ora = this.achInfo.users.filter(user => user.id === this.tokenPayload.subject);
       if (ora.length === 0) {
         this.achInfo.users.push({id: this.tokenPayload.subject});
@@ -57,20 +58,20 @@ export class AchiveComponent implements OnInit {
     });
   }
 
-  achieveSubmitToUser(achid) {
-    const userId = {id: this.tokenPayload.subject};
-    this.userserv.getUser(userId).subscribe(data => {
-      this.userInfo = data;
-      const userAchieves = this.userInfo.achieves.filter(achieve => achieve.id === achid);
-      if (userAchieves.length === 0) {
-        this.userInfo.achieves.push({id: achid});
-        this.userAchieveDetails = {id: this.tokenPayload.subject, achieves: this.userInfo.achieves};
-        this.userserv.updateUser(this.userAchieveDetails).subscribe(res => {
-        });
-      } else {
-      }
-    });
-  }
+  // achieveSubmitToUser(achid) {
+  //   const userId = {id: this.tokenPayload.subject};
+  //   this.userserv.getUser(userId).subscribe(data => {
+  //     this.userInfo = data;
+  //     const userAchieves = this.userInfo.achieves.filter(achieve => achieve.id === achid);
+  //     if (userAchieves.length === 0) {
+  //       this.userInfo.achieves.push({id: achid});
+  //       this.userAchieveDetails = {id: this.tokenPayload.subject, achieves: this.userInfo.achieves};
+  //       this.userserv.updateUser(this.userAchieveDetails).subscribe(res => {
+  //       });
+  //     } else {
+  //     }
+  //   });
+  // }
 
   sendSubmDetToAutor(dat) {
     const userId = {id: dat.author};
@@ -79,14 +80,32 @@ export class AchiveComponent implements OnInit {
       if (dat.author === this.tokenPayload.subject) {
         console.log('r u eblan? u r author');
       } else {
-        const validSubmitAuth = this.submitAchAuth.submittedAchieves.filter( achieve => achieve.achieveId === dat._id);
+        const validSubmitAuth = this.submitAchAuth.submittedAchieves.filter(achieve => achieve.achieveId === dat._id);
         if (validSubmitAuth.length === 0) {
-        this.submitAchAuth.submittedAchieves.push({achieveId: dat._id, userId: this.tokenPayload.subject, isSubmitted: false});
-        const idPayload = {id: dat.author, submittedAchieves: this.submitAchAuth.submittedAchieves};
-        this.userserv.updateUser(idPayload).subscribe(res => {
-        });
+          this.submitAchAuth.submittedAchieves.push({achieveId: dat._id, userId: this.tokenPayload.subject, isSubmitted: false});
+          const idPayload = {id: dat.author, submittedAchieves: this.submitAchAuth.submittedAchieves};
+          this.userserv.updateUser(idPayload).subscribe(res => {
+          });
         }
       }
+    });
+  }
+
+  sendAchDetToUserSubmitted(dat) {
+    const userId = {id: this.tokenPayload.subject};
+    this.userserv.getUser(userId).subscribe(res => {
+      this.submittedPayload = res;
+      if (this.tokenPayload.subject !== dat.author) {
+        const validUserSubscribe = this.submittedPayload.subscribedAchieves.filter(achieve => achieve.achieved === dat._id);
+        if (validUserSubscribe.length === 0) {
+          this.submittedPayload.subscribedAchieves.push({achieved: dat._id, authorId: dat.author, isSubmittd: false});
+          const dataPayload = {id: this.tokenPayload.subject, subscribedAchieves: this.submittedPayload.subscribedAchieves};
+          console.log('worked');
+          this.userserv.updateUser(dataPayload).subscribe(res => {
+          });
+        }
+      }
+
     });
   }
 
