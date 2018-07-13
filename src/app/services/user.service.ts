@@ -21,6 +21,7 @@ export class UserService {
   private adminconByauthor = 'http://localhost:3000/api/admincon';
   private getGroupsListHTTP = 'http://localhost:3000/api/grouplist';
   private modifyAchieves = 'http://localhost:3000/api/modifyachieve';
+  private getAllUsers = "http://localhost:3000/api/getAllUsers";
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -55,6 +56,10 @@ export class UserService {
 
   getIcons(): Observable<any> {
     return this.http.get(this.icons);
+  }
+
+  getUsersAll(): Observable<any> {
+    return this.http.get(this.getAllUsers);
   }
 
   getUser(req): Observable<any> {
