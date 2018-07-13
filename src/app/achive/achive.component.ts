@@ -22,7 +22,7 @@ export class AchiveComponent implements OnInit {
   public alreadySubbed;
   public userDetails;
   public userAchieveDetails;
-  public submitAchAuth;
+  public submitAchAuth = <any>[] ;
   public submittedPayload;
 
   constructor(private userserv: UserService, private route: ActivatedRoute) {
@@ -77,10 +77,12 @@ export class AchiveComponent implements OnInit {
     const userId = {id: dat.author};
     this.userserv.getUser(userId).subscribe(data => {
       this.submitAchAuth = data;
+
       if (dat.author === this.tokenPayload.subject) {
         console.log('r u eblan? u r author');
       } else {
         const validSubmitAuth = this.submitAchAuth.submittedAchieves.filter(achieve => achieve.achieveId === dat._id);
+        console.log(validSubmitAuth);
         if (validSubmitAuth.length === 0) {
           this.submitAchAuth.submittedAchieves.push({achieveId: dat._id, userId: this.tokenPayload.subject, isSubmitted: false});
           const idPayload = {id: dat.author, submittedAchieves: this.submitAchAuth.submittedAchieves};
@@ -93,8 +95,10 @@ export class AchiveComponent implements OnInit {
 
   sendAchDetToUserSubmitted(dat) {
     const userId = {id: this.tokenPayload.subject};
-    this.userserv.getUser(userId).subscribe(res => {
-      this.submittedPayload = res;
+    this.userserv.getUser(userId).subscribe(resp => {
+      this.submittedPayload = resp;
+      console.log(dat);
+      console.log(this.submittedPayload);
       if (this.tokenPayload.subject !== dat.author) {
         const validUserSubscribe = this.submittedPayload.subscribedAchieves.filter(achieve => achieve.achieved === dat._id);
         if (validUserSubscribe.length === 0) {
