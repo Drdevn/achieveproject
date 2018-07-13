@@ -101,7 +101,6 @@ export class AchiveComponent implements OnInit {
         if (validUserSubscribe.length === 0) {
           this.submittedPayload.subscribedAchieves.push({achieved: dat._id, authorId: dat.author, isSubmittd: false});
           const dataPayload = {id: this.tokenPayload.subject, subscribedAchieves: this.submittedPayload.subscribedAchieves};
-          console.log('worked');
           this.userserv.updateUser(dataPayload).subscribe(res => {
           });
         }
