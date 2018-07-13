@@ -80,7 +80,9 @@ export class AchiveComponent implements OnInit {
       if (dat.author === this.tokenPayload.subject) {
         console.log('r u eblan? u r author');
       } else {
-        const validSubmitAuth = this.submitAchAuth.submittedAchieves.filter(achieve => achieve.achieveId === dat._id);
+        const validSubmitAuth = this.submitAchAuth.submittedAchieves.filter(achieve =>
+          achieve.achieveId === dat._id && achieve.userId === this.tokenPayload.subject);
+        console.log(validSubmitAuth);
         if (validSubmitAuth.length === 0) {
           this.submitAchAuth.submittedAchieves.push({achieveId: dat._id, userId: this.tokenPayload.subject, isSubmitted: false});
           const idPayload = {id: dat.author, submittedAchieves: this.submitAchAuth.submittedAchieves};
