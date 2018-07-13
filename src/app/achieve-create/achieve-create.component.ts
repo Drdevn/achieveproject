@@ -12,6 +12,7 @@ export class AchieveCreateComponent implements OnInit {
 
   constructor(private userserv: UserService, private route: ActivatedRoute) {
   }
+
   public groupId: any;
 
   public achname;
@@ -23,7 +24,7 @@ export class AchieveCreateComponent implements OnInit {
 
   ngOnInit() {
     this.tokenPayload = decode(this.token);
-    this.route.params.subscribe( data => {
+    this.route.params.subscribe(data => {
       this.groupId = data.id;
     });
 
@@ -37,5 +38,10 @@ export class AchieveCreateComponent implements OnInit {
     console.log(myobj);
     this.userserv.postAchieve(myobj).subscribe(res => {
     });
+  }
+
+  getDate() {
+    const dateNow = new Date().toLocaleString();
+    console.log(dateNow);
   }
 }

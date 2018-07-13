@@ -16,7 +16,7 @@ export class UserPageComponent implements OnInit {
   public userIcon;
   public iconeList;
   public changeIcon = this.userIcon;
-  public updcounter;
+  public subscribeUsersList = [];
   public updurl;
   public userId;
   public groupname;
@@ -26,6 +26,7 @@ export class UserPageComponent implements OnInit {
   public achiveList;
   public achiveSubmittersId;
   public submitterAchiveList = [];
+  public subscriberDetails;
 
 
   modalRef: BsModalRef;
@@ -55,18 +56,33 @@ export class UserPageComponent implements OnInit {
         }
       });
       this.achiveSubmittersId = data.submittedAchieves;
-      console.log(this.achiveSubmittersId);
+      // console.log(this.achiveSubmittersId)
+      // ;
+      // for (let i = 0; i < this.achiveSubmittersId.length; i++) {}
+        // const datUserId = {id: this.achiveSubmittersId[i].userId};
+        // console.log(datUserId);
+        // this.userService.getUser(datUserId).subscribe(data => {
+        //   this.subscriberDetails = data;
+        //   console.log(this.subscriberDetails);
+        //
+        // });
       this.userService.getAchieve().subscribe( achi => {
         this.achiveList = achi;
         for (let i = 0; i < this.achiveSubmittersId.length; i++) {
           const taha = this.achiveList.filter( achiveId => achiveId._id === this.achiveSubmittersId[i].achieveId);
           this.submitterAchiveList.push(taha[0]);
         }
-        console.log(this.submitterAchiveList);
       });
     });
   }
+  closeAchive(achieveBody) {
+      const userId = { id: achieveBody.userId};
+      console.log(achieveBody);
+      // this.userService.updateUser(userId).subscribe(res => {
+      // });
 
+      // console.log(this.subscribeUsersList);
+  }
 
   openModal(template) {
     this.modalRef = this.modalService.show(template);
@@ -81,11 +97,11 @@ export class UserPageComponent implements OnInit {
 
   }
 
-  updateUser() {
-    const userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.updurl};
-    this.userService.updateUser(userupd).subscribe(res => {
-    });
-  }
+  // updateUser() {
+  //   const userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.updurl};
+  //   this.userService.updateUser(userupd).subscribe(res => {
+  //   });
+  // }
 
   addNewGroup() {
     const addGroupDet = {
