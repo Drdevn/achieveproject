@@ -36,7 +36,6 @@ export class AchieveCreateComponent implements OnInit {
       value: this.value, author: this.tokenPayload.subject, users: []
     };
     if ( this.achname && this.achcontent && this.value) {
-
       console.log(myobj);
       this.userserv.postAchieve(myobj).subscribe(res => {
       });
