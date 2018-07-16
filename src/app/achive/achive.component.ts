@@ -49,10 +49,15 @@ export class AchiveComponent implements OnInit {
       this.sendAchDetToUserSubmitted(data);
       const ora = this.achInfo.users.filter(user => user.id === this.tokenPayload.subject);
       if (ora.length === 0) {
-        this.achInfo.users.push({id: this.tokenPayload.subject});
-        this.userDetails = {id: this.achInfo._id, users: this.achInfo.users};
-        this.userserv.modifyAchieve(this.userDetails).subscribe(res => {
+        const myd = {id: this.tokenPayload.subject};
+        this.userserv.getUser(myd).subscribe(user => {
+          console.log(user);
+          this.achInfo.users.push({id: user._id, username: user.username, icon: user.icon});
+          this.userDetails = {id: this.achInfo._id, users: this.achInfo.users};
+          this.userserv.modifyAchieve(this.userDetails).subscribe(res => {
+          });
         });
+
       } else {
       }
     });
