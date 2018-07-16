@@ -35,9 +35,12 @@ export class AchieveCreateComponent implements OnInit {
       name: this.achname, content: this.achcontent, groupId: this.groupId, reward: this.achreward,
       value: this.value, author: this.tokenPayload.subject, users: []
     };
-    console.log(myobj);
-    this.userserv.postAchieve(myobj).subscribe(res => {
-    });
+    if ( this.achname && this.achcontent && this.value) {
+
+      console.log(myobj);
+      this.userserv.postAchieve(myobj).subscribe(res => {
+      });
+    }
   }
 
   getDate() {
