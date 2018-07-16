@@ -16,7 +16,7 @@ export class UserPageComponent implements OnInit {
   public userIcon;
   public iconeList;
   public changeIcon = this.userIcon;
-  public subscribeUsersList = [];
+  public createdAchieves = [];
   public updurl;
   public userId;
   public groupname;
@@ -56,6 +56,7 @@ export class UserPageComponent implements OnInit {
         }
       });
       this.achiveSubmittersId = data.submittedAchieves;
+      console.log(this.achiveSubmittersId);
       // console.log(this.achiveSubmittersId)
       // ;
       // for (let i = 0; i < this.achiveSubmittersId.length; i++) {}
@@ -68,10 +69,16 @@ export class UserPageComponent implements OnInit {
         // });
       this.userService.getAchieve().subscribe( achi => {
         this.achiveList = achi;
-        for (let i = 0; i < this.achiveSubmittersId.length; i++) {
-          const taha = this.achiveList.filter( achiveId => achiveId._id === this.achiveSubmittersId[i].achieveId);
-          this.submitterAchiveList.push(taha[0]);
-        }
+        const checkAuthor = this.achiveList.filter(achieve => achieve.author === this.tokenPayload.subject);
+        console.log( checkAuthor);
+        this.submitterAchiveList = checkAuthor;
+        // for (let i = 0; i < this.achiveSubmittersId.length; i++) {
+          // const taha = this.achiveList.filter( achiveId => achiveId._id === this.achiveSubmittersId[i].achieveId );
+          // console.log(taha);
+          //
+          // this.submitterAchiveList.push(taha[0]);
+
+        // }
       });
     });
   }
