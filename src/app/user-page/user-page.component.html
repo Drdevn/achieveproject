@@ -73,6 +73,7 @@
                     </div>
                     <div class="col-lg-6">
                       <button type="button" (click)="closeAchive(user, achive)" *ngIf="!user.isSubmited" class="btn">Confirm Submit!</button>
+                      <i class="fas fa-check" *ngIf="user.isSubmited"></i>
                     </div>
                   </div>
                 </div>
