@@ -82,6 +82,7 @@ export class UserPageComponent implements OnInit {
       });
     });
   }
+
   closeAchive(uid, achiva) {
     // console.log(uid.id);
     // console.log(achiva._id);
@@ -89,9 +90,11 @@ export class UserPageComponent implements OnInit {
     this.userService.getUser(userId).subscribe(user => {
       // console.log(user);
       this.confirm = user.doneAchieves;
-      this.confirm.push({doneAchieveId: achiva._id});//to put more info for dane achive
+      const dateNow = new Date().toLocaleString();
+      this.confirm.push({name: achiva.name, content: achiva.content, reward: achiva.reward, data: dateNow});
       const confirmUser = {id: uid.id, doneAchieves: this.confirm};
-      this.userService.updateUser(confirmUser).subscribe( req => {});
+      this.userService.updateUser(confirmUser).subscribe(req => {
+      });
 
 
 
