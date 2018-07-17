@@ -44,28 +44,37 @@
               <div class="col-lg-12 one-group-from-list"><a (click)="groupNavigate(group.id)">{{group.name}}</a></div>
             </div>
           </accordion-group>
-          <accordion-group heading="My Active Achievements">
+          <accordion-group heading="Achive I try to do">
               <p>Some content</p>
             </accordion-group>
-        <accordion-group heading="Achivements Subscribers">
+        <accordion-group heading="My created achives">
           <div class="row one-achive" *ngFor="let achive of submitterAchiveList">
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
               <div class="row" style="text-align: center;">
                 <div class="col-lg-12 one-achive-name">
+                  <h6>Achive name:</h6>
                   <p>{{achive.name}}</p>
                 </div>
                 <div class="col-lg-12">
+                  <h6>what to do:</h6>
                   <p>{{achive.content}}</p>
+                  <h5>User are subscribe:</h5>
                   <div *ngFor="let user of achive.users" class="row">
                     <div class="col-lg-6">
-                      <p>{{user.username}}</p>
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <img src="../../assets/icons/{{user.icon}}" alt="">
+                        </div>
+                        <div class="col-lg-8">
+                          <p>{{user.username}}</p>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-lg-6">
-                      <button type="button" (click)="closeAchive(achive)" *ngIf="!isSubmitted" >Confirm Submit!</button>
+                      <button type="button" (click)="closeAchive(user, achive)" *ngIf="!isSubmitted" class="btn">Confirm Submit!</button>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>

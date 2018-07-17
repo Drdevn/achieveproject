@@ -17,7 +17,7 @@ export class UserPageComponent implements OnInit {
   public iconeList;
   public changeIcon = this.userIcon;
   public createdAchieves = [];
-  public updurl;
+  public confirm = [];
   public userId;
   public groupname;
   public groupId;
@@ -82,13 +82,26 @@ export class UserPageComponent implements OnInit {
       });
     });
   }
-  closeAchive(achieveBody) {
-      const userId = { id: achieveBody.userId};
-      console.log(achieveBody);
-      // this.userService.updateUser(userId).subscribe(res => {
-      // });
+  closeAchive(uid, achiva) {
+    // console.log(uid.id);
+    // console.log(achiva._id);
+    const userId = {id: uid.id};
+    this.userService.getUser(userId).subscribe(user => {
+      // console.log(user);
+      this.confirm = user.doneAchieves;
+      this.confirm.push({doneAchieveId: achiva._id});//to put more info for dane achive
+      const confirmUser = {id: uid.id, doneAchieves: this.confirm};
+      // this.userService.updateUser(confirmUser).subscribe( req => {});
 
-      // console.log(this.subscribeUsersList);
+
+      const nataha = achiva.users.filter(curent => curent.id === uid.id)
+      nataha[0].isSubmited = true;
+      const test = achiva.users.indexOf(uid.id);
+      console.log(test);
+      // console.log(\);
+      // const achivUpdater = {id: achiva._id, users: };
+      // this.userService.modifyAchieve(achivUpdater).subscribe(res => {});
+    });
   }
 
   openModal(template) {
@@ -157,6 +170,10 @@ export class UserPageComponent implements OnInit {
 
   groupNavigate(id) {
     this.router.navigate(['/groups/', id]);
+  }
+
+  confirmSubmit(uid){
+
   }
 
 }
