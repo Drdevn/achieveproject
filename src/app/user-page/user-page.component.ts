@@ -89,14 +89,22 @@ export class UserPageComponent implements OnInit {
     this.userService.getUser(userId).subscribe(user => {
       // console.log(user);
       this.confirm = user.doneAchieves;
-      this.confirm.push({doneAchieveId: achiva._id});//to put more info for dane achive
+      this.confirm.push({doneAchieveId: achiva._id});
       const confirmUser = {id: uid.id, doneAchieves: this.confirm};
-      // this.userService.updateUser(confirmUser).subscribe( req => {});
+      this.userService.updateUser(confirmUser).subscribe( req => {});
 
       const test = achiva.users.indexOf(uid);
       console.log(test);
       // const achivUpdater = {id: achiva._id, users: };
       // this.userService.modifyAchieve(achivUpdater).subscribe(res => {});
+
+
+      const i = achiva.users.indexOf(uid);
+      console.log(i);
+      achiva.users[i].isSubmited = true;
+      const freshUsers = achiva.users;
+      const achivUpdater = {id: achiva._id, users: freshUsers};
+      this.userService.modifyAchieve(achivUpdater).subscribe(res => {});
     });
   }
 

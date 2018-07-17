@@ -45,7 +45,7 @@ export class AchiveComponent implements OnInit {
     // this.achieveSubmitToUser(id);
     this.userserv.getAchievesById(achieveId).subscribe(data => {
       this.achInfo = data;
-      this.sendSubmDetToAutor(data);
+      // this.sendSubmDetToAutor(data);
       this.sendAchDetToUserSubmitted(data);
       const ora = this.achInfo.users.filter(user => user.id === this.tokenPayload.subject);
       if (ora.length === 0) {
@@ -57,7 +57,6 @@ export class AchiveComponent implements OnInit {
           this.userserv.modifyAchieve(this.userDetails).subscribe(res => {
           });
         });
-
       } else {
       }
     });
@@ -90,8 +89,8 @@ export class AchiveComponent implements OnInit {
         if (validSubmitAuth.length === 0) {
           this.submitAchAuth.submittedAchieves.push({achieveId: dat._id, userId: this.tokenPayload.subject, isSubmitted: false});
           const idPayload = {id: dat.author, submittedAchieves: this.submitAchAuth.submittedAchieves};
-          this.userserv.updateUser(idPayload).subscribe(res => {
-          });
+          // this.userserv.updateUser(idPayload).subscribe(res => {
+          // });
         }
       }
     });
