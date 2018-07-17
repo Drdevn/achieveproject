@@ -52,7 +52,7 @@ export class AchiveComponent implements OnInit {
         const myd = {id: this.tokenPayload.subject};
         this.userserv.getUser(myd).subscribe(user => {
           console.log(user);
-          this.achInfo.users.push({id: user._id, username: user.username, icon: user.icon});
+          this.achInfo.users.push({id: user._id, username: user.username, icon: user.icon, isSubmited: false});
           this.userDetails = {id: this.achInfo._id, users: this.achInfo.users};
           this.userserv.modifyAchieve(this.userDetails).subscribe(res => {
           });
