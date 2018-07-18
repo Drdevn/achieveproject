@@ -16,7 +16,7 @@ export class UserPageComponent implements OnInit {
   public userIcon;
   public iconeList;
   public changeIcon = this.userIcon;
-  public createdAchieves = [];
+  public subscribedAchievesList = [];
   public confirm = [];
   public userId;
   public groupname;
@@ -61,25 +61,27 @@ export class UserPageComponent implements OnInit {
         const checkAuthor = this.achiveList.filter(achieve => achieve.author === this.tokenPayload.subject);
         console.log(checkAuthor);
         this.submitterAchiveList = checkAuthor;
-        // for (let i = 0; i < this.achiveSubmittersId.length; i++) {
-          // const taha = this.achiveList.filter( achiveId => achiveId._id === this.achiveSubmittersId[i].achieveId );
-          // console.log(taha);
-          //
-          // this.submitterAchiveList.push(taha[0]);
+        console.log(data.doneAchieves);
 
-        // }
+        //вивід ачівок на які питписаний користувач;
+        for (let i = 0; i < data.subscribedAchieves.length; i++) {
+          if (!data.subscribedAchieves[i].isSubmittd) {
+            const subscribeAchives = this.achiveList.filter( achko => achko._id === data.subscribedAchieves[i].achieved );
+            this.submitterAchiveList.push(subscribeAchives[0]);
+          }
+        }
+        console.log(this.submitterAchiveList);
+
       });
+
     });
   }
 
   closeAchive(uid, achiva) {
-    // console.log(uid.id);
-    // console.log(achiva._id);
+
     const userId = {id: uid.id};
     this.userService.getUser(userId).subscribe(user => {
-      // console.log(user);
       this.confirm = user.doneAchieves;
-      this.confirm.push({doneAchieveId: achiva._id});
       const dateNow = new Date().toLocaleString();
       this.confirm.push({name: achiva.name, content: achiva.content, reward: achiva.reward, data: dateNow});
       const confirmUser = {id: uid.id, doneAchieves: this.confirm};
@@ -88,8 +90,6 @@ export class UserPageComponent implements OnInit {
 
       const test = achiva.users.indexOf(uid);
       console.log(test);
-      // const achivUpdater = {id: achiva._id, users: };
-      // this.userService.modifyAchieve(achivUpdater).subscribe(res => {});
 
 
       const i = achiva.users.indexOf(uid);
@@ -113,12 +113,6 @@ export class UserPageComponent implements OnInit {
     this.modalRef.hide();
 
   }
-
-  // updateUser() {
-  //   const userupd = {id: this.tokenPayload.subject, counter: this.updcounter, icon: this.updurl};
-  //   this.userService.updateUser(userupd).subscribe(res => {
-  //   });
-  // }
 
   addNewGroup() {
     const addGroupDet = {
@@ -169,9 +163,7 @@ export class UserPageComponent implements OnInit {
     this.router.navigate(['/groups/', id]);
   }
 
-  confirmSubmit(uid){
 
-  }
 
 }
 
