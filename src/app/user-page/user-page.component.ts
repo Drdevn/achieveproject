@@ -26,7 +26,7 @@ export class UserPageComponent implements OnInit {
   public achiveList;
   public achiveSubmittersId;
   public submitterAchiveList = [];
-  public subscriberDetails;
+  public doneAc;
 
 
   modalRef: BsModalRef;
@@ -49,28 +49,17 @@ export class UserPageComponent implements OnInit {
     this.userService.getUser(userid).subscribe(data => {
       this.userData = data;
       this.userIcon = data.icon;
+      this.doneAc = data.doneAchieves.length;
       this.changeIcon = this.userIcon;
       this.userData.groups.forEach(dat => {
         if (dat.author !== null) {
           this.valid = false;
         }
       });
-      this.achiveSubmittersId = data.submittedAchieves;
-      console.log(this.achiveSubmittersId);
-      // console.log(this.achiveSubmittersId)
-      // ;
-      // for (let i = 0; i < this.achiveSubmittersId.length; i++) {}
-        // const datUserId = {id: this.achiveSubmittersId[i].userId};
-        // console.log(datUserId);
-        // this.userService.getUser(datUserId).subscribe(data => {
-        //   this.subscriberDetails = data;
-        //   console.log(this.subscriberDetails);
-        //
-        // });
       this.userService.getAchieve().subscribe( achi => {
         this.achiveList = achi;
         const checkAuthor = this.achiveList.filter(achieve => achieve.author === this.tokenPayload.subject);
-        console.log( checkAuthor);
+        console.log(checkAuthor);
         this.submitterAchiveList = checkAuthor;
         // for (let i = 0; i < this.achiveSubmittersId.length; i++) {
           // const taha = this.achiveList.filter( achiveId => achiveId._id === this.achiveSubmittersId[i].achieveId );
