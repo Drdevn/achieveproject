@@ -48,8 +48,7 @@ export class AchiveComponent implements OnInit {
       // this.sendSubmDetToAutor(data);
       this.sendAchDetToUserSubmitted(data);
       const ora = this.achInfo.users.filter(user => user.id === this.tokenPayload.subject);
-
-      if (ora.length === 0) {
+      if (ora.length === 0 && this.achInfo.author !== this.tokenPayload.subject) {
         const myd = {id: this.tokenPayload.subject};
         this.userserv.getUser(myd).subscribe(user => {
           console.log(user);
@@ -58,7 +57,6 @@ export class AchiveComponent implements OnInit {
           this.userserv.modifyAchieve(this.userDetails).subscribe(res => {
           });
         });
-      } else {
       }
     });
   }

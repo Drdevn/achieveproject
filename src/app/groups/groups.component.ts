@@ -15,6 +15,8 @@ export class GroupsComponent implements OnInit {
   public subscribed = true;
   public userInfo;
   public groupsListUpdate = [];
+  public value;
+  public groupId: any;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute) {
@@ -23,6 +25,9 @@ export class GroupsComponent implements OnInit {
   ngOnInit() {
     this.OnInitData();
     this.tokenPayload = decode(this.token);
+    this.route.params.subscribe(data => {
+      this.groupId = data.id;
+    });
   }
 
   OnInitData() {
@@ -46,11 +51,9 @@ export class GroupsComponent implements OnInit {
       });
     });
     this.subscribed = false;
-
   }
 
   submitCheck() {
-
     const myid = {id: this.tokenPayload.subject};
     this.userService.getUser(myid).subscribe(data => {
       console.log(this.groupData._id);
@@ -87,5 +90,4 @@ export class GroupsComponent implements OnInit {
     this.subscribed = true;
 
   }
-
 }

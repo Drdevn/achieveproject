@@ -41,9 +41,4 @@ export class AchieveCreateComponent implements OnInit {
       });
     }
   }
-
-  getDate() {
-    const dateNow = new Date().toLocaleString();
-    console.log(dateNow);
-  }
 }
