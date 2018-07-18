@@ -43,8 +43,23 @@
               <div class="col-lg-12 one-group-from-list"><a (click)="groupNavigate(group.id)">{{group.name}}</a></div>
             </div>
           </accordion-group>
-          <accordion-group heading="Achive I try to do">
-              <p>Some content</p>
+          <accordion-group heading="Achive I try to do" >
+            <div class="row one-achive"             *ngFor="let achiv of submitterAchiveList">
+              <div class="col-lg-2"></div>
+              <div class="col-lg-8">
+                <div class="row" style="text-align: center;">
+                  <div class="col-lg-12 one-achive-name">
+                    <p>{{achiv.name}}</p>
+                  </div>
+                  <div class="col-lg-12">
+                    <p>{{achiv.content}}</p>
+                    <p>{{achiv.reward}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 one-achive-date" style="text-align: center">
+              </div>
+            </div>
             </accordion-group>
         <accordion-group heading="My created achives">
           <div class="row one-achive" *ngFor="let achive of submitterAchiveList">
