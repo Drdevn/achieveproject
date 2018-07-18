@@ -24,7 +24,7 @@ export class UserPageComponent implements OnInit {
   public getGroupId = <any>[];
   public valid = true;
   public achiveList;
-  public achiveSubmittersId;
+  public achiveSubmittersId = [];
   public submitterAchiveList = [];
   public doneAc;
 
@@ -63,14 +63,14 @@ export class UserPageComponent implements OnInit {
         this.submitterAchiveList = checkAuthor;
         console.log(data.doneAchieves);
 
-        //вивід ачівок на які питписаний користувач;
+        //вивід ачівок на які підписаний користувач;
         for (let i = 0; i < data.subscribedAchieves.length; i++) {
           if (!data.subscribedAchieves[i].isSubmittd) {
             const subscribeAchives = this.achiveList.filter( achko => achko._id === data.subscribedAchieves[i].achieved );
-            this.submitterAchiveList.push(subscribeAchives[0]);
+            this.achiveSubmittersId.push(subscribeAchives[0]);
           }
         }
-        console.log(this.submitterAchiveList);
+        console.log(this.achiveSubmittersId);
 
       });
 
