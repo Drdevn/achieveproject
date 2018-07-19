@@ -48,6 +48,9 @@ body{
 .name{
 }
 .content{
+  overflow: hidden;
+  height: 100px;
+
 }
 .reward{
 

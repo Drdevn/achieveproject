@@ -83,7 +83,7 @@ export class UserPageComponent implements OnInit {
     this.userService.getUser(userId).subscribe(user => {
       this.confirm = user.doneAchieves;
       const dateNow = new Date().toLocaleString();
-      this.confirm.push({name: achiva.name, content: achiva.content, reward: achiva.reward, data: dateNow});
+      this.confirm.push({name: achiva.name, content: achiva.content, reward: achiva.reward, data: dateNow, value: achiva.value });
       const confirmUser = {id: uid.id, doneAchieves: this.confirm};
       this.userService.updateUser(confirmUser).subscribe(req => {
       });
