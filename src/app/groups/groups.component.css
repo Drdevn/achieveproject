@@ -92,6 +92,103 @@ body{
 .change-achieve-value input {
   margin-left: 5px;
 }
+
+/*ACHIVEE CREATE COMPONENT*/
+
+.achievecontainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*box-sizing: border-box;*/
+  padding: 0;
+  width: 300px;
+  /*  flex: 1 1 300px;*/
+  margin-top: 15px;
+  border: 1px solid #4ecca3;
+  /*color: #00204a;*/
+}
+.addach{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*box-sizing: border-box;*/
+  padding: 0;
+  width: 300px;
+  /*  flex: 1 1 300px;*/
+  margin-top: 15px;
+  border: 1px solid #4ecca3;
+}
+.toolbox{
+  display: flex;
+  margin: 10px;
+}
+.lois{
+  /*color: azure;*/
+  cursor: pointer;
+  margin: 0;
+  transition: 0.3s linear;
+  text-transform: uppercase;
+}
+.lois:hover{
+  color: lightseagreen;
+}
+.submit:hover{
+  color: #4ecca3;
+}
+.achieve{
+  width:100%;
+  text-align: center;
+}
+.name{
+}
+.content{
+  overflow: hidden;
+  height: 100px;
+
+}
+.reward{
+
+}
+.toolbox{
+  width: 100%;
+  margin: 0;
+  background-color: #2a363b;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.submit{
+  font-size: 17px;
+  text-transform: uppercase;
+  transition: 0.3s linear;
+  margin: 0;
+  cursor: pointer;
+}
+.okbut{
+  font-size: 17px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s linear;
+  margin: 0;
+}
+.okbut:hover{
+  color: #4ecca3;
+
+}
+.change-achieve-value{
+  display: flex;
+
+}
+.legend{
+  padding: 0 !important;
+  width: 100%;
+  font-size: 21px;
+  text-align: center;
+  border-bottom: 1px solid #4ecca3;
+}
+.change-achieve-value input {
+  margin-left: 5px;
+}
 .change-achieve-value-input{
 }
 .common{
@@ -112,3 +209,98 @@ body{
   border: 1px solid #a626ca;
   color: #a626ca;
 }
+
+
+/*ACHIVE COMPONENT*/
+.achievecontainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*box-sizing: border-box;*/
+  padding: 0;
+  width: 300px;
+  /*  flex: 1 1 300px;*/
+  margin-top: 15px;
+  border: 1px solid #4ecca3;
+  /*color: #00204a;*/
+}
+.addach{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*box-sizing: border-box;*/
+  padding: 0;
+  width: 300px;
+  /*  flex: 1 1 300px;*/
+  margin-top: 15px;
+  border: 1px solid #4ecca3;
+}
+.toolbox{
+  display: flex;
+  margin: 10px;
+}
+.lois{
+  /*color: azure;*/
+  cursor: pointer;
+  margin: 0;
+  transition: 0.3s linear;
+  text-transform: uppercase;
+}
+.lois:hover{
+  color: lightseagreen;
+}
+.submit:hover{
+  color: #4ecca3;
+}
+.achieve{
+  width:100%;
+  text-align: center;
+}
+.name{
+}
+.content{
+}
+.reward{
+
+}
+.toolbox{
+  width: 100%;
+  margin: 0;
+  background-color: #2a363b;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.submit{
+  font-size: 17px;
+  text-transform: uppercase;
+  transition: 0.3s linear;
+  margin: 0;
+  cursor: pointer;
+}
+.okbut{
+  font-size: 17px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s linear;
+  margin: 0;
+}
+.okbut:hover{
+  color: #4ecca3;
+
+}
+.change-achieve-value{
+  display: flex;
+
+}
+.legend{
+  padding: 0 !important;
+  width: 100%;
+  font-size: 21px;
+  text-align: center;
+  border-bottom: 1px solid #4ecca3;
+}
+.change-achieve-value input {
+  margin-left: 5px;
+}
+
