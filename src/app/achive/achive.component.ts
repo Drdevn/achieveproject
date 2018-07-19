@@ -35,7 +35,6 @@ export class AchiveComponent implements OnInit {
         this.getAchieve = this.achInfo.filter(ach => ach.groupId === grId.id);
       });
     });
-    // this.userserv.getUser()
     this.tokenPayload = decode(this.token);
 
   }
@@ -75,7 +74,7 @@ export class AchiveComponent implements OnInit {
   //     }
   //   });
   // }
-  sendSubmDetToAutor(dat) {
+/*  sendSubmDetToAutor(dat) {
     const userId = {id: dat.author};
     this.userserv.getUser(userId).subscribe(data => {
       this.submitAchAuth = data;
@@ -93,7 +92,7 @@ export class AchiveComponent implements OnInit {
         }
       }
     });
-  }
+  }*/
 
   sendAchDetToUserSubmitted(dat) {
     const userId = {id: this.tokenPayload.subject};
