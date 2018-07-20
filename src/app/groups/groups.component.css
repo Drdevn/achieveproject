@@ -5,13 +5,12 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*box-sizing: border-box;*/
   padding: 0;
-  width: 300px;
-  /*  flex: 1 1 300px;*/
-  margin-top: 15px;
+  width: 100%;
   border: 1px solid #4ecca3;
-  /*color: #00204a;*/
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 15px;
 }
 .addach{
   display: flex;
@@ -95,18 +94,6 @@ body{
 
 /*ACHIVEE CREATE COMPONENT*/
 
-.achievecontainer{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /*box-sizing: border-box;*/
-  padding: 0;
-  width: 300px;
-  /*  flex: 1 1 300px;*/
-  margin-top: 15px;
-  border: 1px solid #4ecca3;
-  /*color: #00204a;*/
-}
 .addach{
   display: flex;
   flex-direction: column;
@@ -186,44 +173,26 @@ body{
   text-align: center;
   border-bottom: 1px solid #4ecca3;
 }
+
 .change-achieve-value input {
   margin-left: 5px;
 }
+
 .change-achieve-value-input{
-}
-.common{
-  border: 1px solid #EEEEEE;
-}
-
-.uncommon{
-  border: 1px solid #aef4a4;
-  color: #aef4a4;
-}
-
-.rare{
-  border: 1px solid #2f89fc;
-  color: #2f89fc;
-}
-
-.epic{
-  border: 1px solid #a626ca;
-  color: #a626ca;
 }
 
 
 /*ACHIVE COMPONENT*/
-.achievecontainer{
+.present-achievecontainer{
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*box-sizing: border-box;*/
   padding: 0;
-  width: 300px;
-  /*  flex: 1 1 300px;*/
   margin-top: 15px;
-  border: 1px solid #4ecca3;
-  /*color: #00204a;*/
+  border-radius: 5px;
+  padding-bottom: 2px;
 }
+
 .addach{
   display: flex;
   flex-direction: column;
@@ -235,10 +204,12 @@ body{
   margin-top: 15px;
   border: 1px solid #4ecca3;
 }
+
 .toolbox{
   display: flex;
   margin: 10px;
 }
+
 .lois{
   /*color: azure;*/
   cursor: pointer;
@@ -246,23 +217,30 @@ body{
   transition: 0.3s linear;
   text-transform: uppercase;
 }
+
 .lois:hover{
   color: lightseagreen;
 }
+
 .submit:hover{
   color: #4ecca3;
 }
+
 .achieve{
   width:100%;
   text-align: center;
 }
+
 .name{
 }
+
 .content{
 }
+
 .reward{
 
 }
+
 .toolbox{
   width: 100%;
   margin: 0;
@@ -278,6 +256,7 @@ body{
   margin: 0;
   cursor: pointer;
 }
+
 .okbut{
   font-size: 17px;
   text-transform: uppercase;
@@ -285,10 +264,12 @@ body{
   transition: 0.3s linear;
   margin: 0;
 }
+
 .okbut:hover{
   color: #4ecca3;
 
 }
+
 .change-achieve-value{
   display: flex;
 
@@ -300,7 +281,11 @@ body{
   text-align: center;
   border-bottom: 1px solid #4ecca3;
 }
+
 .change-achieve-value input {
   margin-left: 5px;
 }
 
+.usbm-unsubm-btn{
+  margin: auto;
+}

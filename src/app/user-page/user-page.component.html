@@ -78,7 +78,7 @@
                     <div class="col-lg-6">
                       <div class="row">
                         <div class="col-lg-4">
-                          <img src="../../assets/icons/{{user.icon}}" alt="">
+                          <img class="unselect-photo-size" src="../../assets/icons/{{user.icon}}" alt="">
                         </div>
                         <div class="col-lg-8">
                           <p>{{user.username}}</p>
@@ -118,7 +118,7 @@
           <option [ngValue]="icon.name" *ngFor="let icon of iconeList">{{icon.name}}</option>
         </select>
       </div>
-        <div class="col-lg-6"><img src="../../assets/icons/{{changeIcon}}" alt=""></div>
+        <div class="col-lg-6 select-photo-size"><img src="../../assets/icons/{{changeIcon}}" alt="" class="unselect-photo-size"></div>
         <div>
             <input type="button" value="Save" (click)="setNewIcon()" class="btn">
           </div>
