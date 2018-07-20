@@ -9,49 +9,51 @@
 
         <h2>Group information </h2>
         <div style="width: 80%;display: flex; justify-content: center;" class="row usbm-unsubm-btn">
-          <input type="button" value="Subscribe" class="btn btn-success"  (click)="groupSubscribe()" *ngIf="subscribed" >
-          <input type="button" value="Unsubscribe" class="bts btn-danger" (click)="groupUnsubscribe()" *ngIf="!subscribed">
+          <input type="button" value="Subscribe" class="btn btn-success" (click)="groupSubscribe()" *ngIf="subscribed">
+          <input type="button" value="Unsubscribe" class="bts btn-danger" (click)="groupUnsubscribe()"
+                 *ngIf="!subscribed">
         </div>
 
-          <div class="col-lg-12">
-            <div class="achievecontainer">
-              <div class="achieve name">
-                <p>Name of ahive:</p>
-                <input type="text" class="achieve name" placeholder="Achievement Name" [(ngModel)]="achname">
-              </div>
-              <div class="achieve content">
-                <p>Content of achive:</p>
-                <textarea class="achieve content" placeholder="Somsing what others shoot to do" [(ngModel)]="achcontent"></textarea>
-              </div>
-              <div class="achieve reward">
-                <p>Revard</p>
-                <input type="text" class="achieve reward" [(ngModel)]="achreward">
-              </div>
-              <div class="container">
-                <div class="change-achieve-value row">
-                  <div class="col-12 legend">Choose quality of achievement:</div>
-                  <div class="col-6 change-achieve-value-input">
-                    <label for="common">Common</label>
-                    <input type="radio" id="common" name="quality" value="common" [(ngModel)]="value">
-                  </div>
-                  <div class="col-6 change-achieve-value-input">
-                    <label for="uncommon">Uncommon</label>
-                    <input type="radio" id="uncommon" name="quality" value="uncommon" [(ngModel)]="value">
-                  </div>
-                  <div class="col-6 change-achieve-value-input">
-                    <label for="rare">Rare</label>
-                    <input type="radio" id="rare" name="quality" value="rare" [(ngModel)]="value">
-                  </div>
-                  <div class="col-6 change-achieve-value-input">
-                    <label for="epic">Epic</label>
-                    <input type="radio" id="epic" name="quality" value="epic" [(ngModel)]="value">
-                  </div>
-                  <div class="toolbox">
-                    <div><p class="okbut" (click)="createAchieve()">Confirm</p></div>
-                  </div>
+        <div class="col-lg-12">
+          <div class="achievecontainer" *ngIf="!subscribed">
+            <div class="achieve name">
+              <p>Name of ahive:</p>
+              <input type="text" class="achieve name" placeholder="Achievement Name" [(ngModel)]="achname">
+            </div>
+            <div class="achieve content">
+              <p>Content of achive:</p>
+              <textarea class="achieve content" placeholder="Somsing what others shoot to do"
+                        [(ngModel)]="achcontent"></textarea>
+            </div>
+            <div class="achieve reward">
+              <p>Revard</p>
+              <input type="text" class="achieve reward" [(ngModel)]="achreward">
+            </div>
+            <div class="container">
+              <div class="change-achieve-value row">
+                <div class="col-12 legend">Choose quality of achievement:</div>
+                <div class="col-6 change-achieve-value-input">
+                  <label for="common">Common</label>
+                  <input type="radio" id="common" name="quality" value="common" [(ngModel)]="value">
+                </div>
+                <div class="col-6 change-achieve-value-input">
+                  <label for="uncommon">Uncommon</label>
+                  <input type="radio" id="uncommon" name="quality" value="uncommon" [(ngModel)]="value">
+                </div>
+                <div class="col-6 change-achieve-value-input">
+                  <label for="rare">Rare</label>
+                  <input type="radio" id="rare" name="quality" value="rare" [(ngModel)]="value">
+                </div>
+                <div class="col-6 change-achieve-value-input">
+                  <label for="epic">Epic</label>
+                  <input type="radio" id="epic" name="quality" value="epic" [(ngModel)]="value">
+                </div>
+                <div class="toolbox">
+                  <div><p class="okbut" (click)="createAchieve()">Confirm</p></div>
                 </div>
               </div>
             </div>
+          </div>
         </div>
       </div>
       <div class="col-lg-8">
@@ -59,19 +61,21 @@
           <div class="col-lg-12">
             <h2>ACHIVEMENTS</h2>
           </div>
-            <div class="col-lg-6" *ngFor="let achieve of getAchieve">
+          <div class="col-lg-6" *ngFor="let achieve of getAchieve" >
+            <div *ngIf="!subscribed">
               <div class="present-achievecontainer {{achieve.value}}">
-              <div class="achieve name">{{achieve.name}}</div>
-              <div class="achieve">{{achieve.content}}</div>
-              <div class="achieve reward">{{achieve.reward}}</div>
-              <div class="toolbox">
-                <div><p class="lois" (click)="giveLukas(achieve._id)">Like</p></div>
-                <div><p class="submit" (click)="submitAchieve(achieve._id)" *ngIf="!alreadySubbed">Submit</p></div>
-              </div>
+                <div class="achieve name">{{achieve.name}}</div>
+                <div class="achieve">{{achieve.content}}</div>
+                <div class="achieve reward">{{achieve.reward}}</div>
+                <div class="toolbox">
+                  <div><p class="lois" (click)="giveLukas(achieve._id)">Like</p></div>
+                  <div><p class="submit" (click)="submitAchieve(achieve._id)" *ngIf="!alreadySubbed">Submit</p></div>
+                </div>
               </div>
             </div>
+          </div>
         </div>
       </div>
 
 
-</div>
+    </div>

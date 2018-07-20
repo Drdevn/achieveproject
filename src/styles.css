@@ -62,3 +62,22 @@ body{
   margin-right: 70px;
   width: 200px;
 }
+
+.common{
+  border: 1px solid #EEEEEE;
+}
+
+.uncommon{
+  border: 1px solid #aef4a4;
+  color: #aef4a4;
+}
+
+.rare{
+  border: 1px solid #2f89fc;
+  color: #2f89fc;
+}
+
+.epic{
+  border: 1px solid #a626ca;
+  color: #a626ca;
+}
